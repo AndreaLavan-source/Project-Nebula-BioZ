@@ -25,3 +25,28 @@ The hardware is validated. The anatomical layout is designed. **I am currently s
 1. Code the firmware routing switching logic to handle the 128-node matrix sequentially.
 2. Build a Python-based data visualization GUI to translate the incoming matrix numbers into a live, color-mapped topographical heatmap of the hand.
 If you are passionate about biomedical engineering, advanced biosensors, or cryptographic biometrics, please open an Issue, submit a Pull Request, or reach out!
+
+
+## 📖 Project Glossary: Bridging Philosophy & Bio-Sensing Instrumentation
+
+To understand the architecture of **Project Nebula**, we must bridge the rigid definitions of academic instrumentation with the foundational philosophies of living biological systems.
+
+### 1. Alternating Current (AC) vs. Direct Current (DC)
+* **The Academic View:** DC flows continuously in a single direction. AC reverses direction and oscillates at a specific frequency (cycles per second).
+* **The Philosophical Mirror:** *DC is a localized surface footprint; AC is a deep harmonic probe.* DC travels along the path of least resistance, bouncing off cell walls and reading only superficial surface moisture. AC vibrates at thousands of cycles per second, allowing the wave to effortlessly penetrate deep through cellular boundaries to map the internal structures of the body.
+
+### 2. The Cell Membrane & Capacitance
+* **The Academic View:** A lipid bilayer that acts as a dielectric insulator, separating charges and temporarily storing electrical energy (capacitance).
+* **The Philosophical Mirror:** *The biological sponge of the vital spark.* The cell membrane acts as a protective shield holding internal negative charges separate from external positive charges. It interacts with the vibrating AC wave by absorbing a microscopic slice of its energy, holding it close, and then releasing it back into the stream.
+
+### 3. Phase Angle (The Biological Delay)
+* **The Academic View:** The angular shift or time lag (measured in degrees) between the injected voltage wave and the resulting current wave, directly caused by capacitive reactance.
+* **The Philosophical Mirror:** *The physical print of the living cell's breath.* Dead matter or static plastic cannot interact with an electrical wave; they yield a phase angle of exactly 0° (purely resistive). A living, breathing cell membrane absorbs, holds, and delays the wave, forcing a healthy negative phase shift. The phase angle is the hardware tracking the cell's living presence.
+
+### 4. Resistance (The Ohm Gateway)
+* **The Academic View:** The physical restriction of electrical current passing through a material, measured in Ohms (Ω).
+* **The Philosophical Mirror:** *The gateway of the material shell.* Resistance tracks the density of the physical body—thick skin layers, dry epidermal tissue, and sweat duct networks. When internal nervous stress or inspiration occurs, sweat ducts open up, flooding the pathway with conductive saltwater. This lowers the Ohm reading, mapping how the internal state alters the external shell.
+
+### 5. Tetrapolar Sensing (4-Pin Isolation)
+* **The Academic View:** Separating the current-driving electrode pair from the voltage-sensing electrode pair to eliminate electrode contact impedance.
+* **The Philosophical Mirror:** *The clear-eyed observer.* In common bipolar systems, wires clash by trying to inject current and sense responses at the exact same physical spot, creating massive surface distortion. A 4-pin configuration separates duties: two pins softly whisper current into the deep tissue, while two separate pins sit back quietly to observe the internal truth without surface interference.
