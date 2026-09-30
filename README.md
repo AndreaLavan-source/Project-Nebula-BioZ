@@ -153,5 +153,11 @@ Layer 3 compiles the error-corrected biological matrix into an immutable, hardwa
 * **The System Philosophy:** *The immutable biometric seal.* In a digital environment increasingly saturated by synthetic replication and artificial vectors, unique biological asymmetry stands as an un-spoofable anchor of individual presence. This layer honors biological autonomy by transforming natural, localized physical variations into a secure cryptographic key—proving that your biological identity is intrinsically secure, unique to the individual, and structurally resilient against external simulation.
 
 
+## 👁️ Future Roadmap: Computer Vision Adaptive Grid Scale
 
+To scale the 128-node symmetrical matrix across diverse anatomical structures (such as varied hand sizes, ages, and geometries), the system will integrate a real-time computer vision preprocessing layer. 
+
+* **The Input Mechanism:** Utilizing a standard camera feed or mobile LiDAR spatial scan processed via Python.
+* **The Execution Logic:** The software maps localized surface landmarks to dynamically configure, scale, and switch the hardware multiplexer array coordinates.
+* **The Architectural Objective:** This ensures precise, normalized anatomical tracking and consistent spatial data density regardless of subject scale or physical variations.
 
