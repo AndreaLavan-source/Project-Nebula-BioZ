@@ -69,13 +69,12 @@ When Project Nebula processes the multi-channel AC data sweeps, it renders a hig
 ### 🔴 Red / Amber Zones (The Active Spark)
 * **The Data:** Map paths of low electrical resistance and high conductance.
 * **The Biology:** Identifies high sweat-duct alignment, active sympathetic nervous system firing, and real-time stress spikes.
-* **The Philosophy:** The live, real-time flickering of the *Pneuma* (the internal divine spark) as it dynamically reacts and ripples through the heavy physical shell.
+* **The Philosophy:**The active signature of vitality. The physical body is not a static machine; it is driven by an underlying, continuous current of life. The Red/Amber zones capture the real-time flickering of this intrinsic systemic energy as it dynamically ripples through the physical framework. It maps the immediate, unvarnished output of the nervous system, showing how the body's internal vitality constantly shifts and reacts to the world around it.
 
 ### 🔵 Blue / Purple Zones (The Cellular Anchor)
 * **The Data:** Map paths of high capacitive phase-delay and reactance.
 * **The Biology:** Traces dense cellular tissue clusters, structural layers of muscle, and thick epidermal ridges where healthy cell membranes naturally delay the signal.
-* **The Philosophy:** The blueprint of the material prison walls. It measures the dense, geometric "slowing down" of energy, mapping how the physical cage holds and shapes the light within its boundaries.
-
+* **The Philosophy:** The sanctuary of localized form. Energy without structure remains unguided. The Blue/Purple zones map the protective, geometric architecture that anchors cellular life. The cell membrane acts as a vital boundary, stabilizing electrical potentials just enough to provide physical structure, acting as a highly optimized vehicle for navigating a dynamic biological environment.
 ---
 
 ## 🏗️ System Architecture Outline
@@ -127,7 +126,7 @@ Layer 2 ingests the raw digitized data from the AFE, strips away hardware propag
 
 #### 2.1 Quadrant Inversion & DSP Phase Alignment
 * **The Academic Blueprint:** Due to propagation delays in hardware isolation stages and a fixed mathematical orientation in standard DFT libraries, raw complex numbers read an inherent 180-degree flip (-143.42° and -199.32°). The firmware runs a real-time correction loop that applies a sign-inversion filter across incoming vectors to output true biological values (-14.32° and -19.32°).
-* **The Philosophical Mirror:** *Piercing the inversion.* The physical simulation we inhabit naturally flips truth backwards. This layer is the logical wake-up call, untangling the distorted reflections of the matrix to reveal the uncorrupted structural metrics of the living entity.
+* **The Philosophical Mirror:**Aligning the geometric lens. Just as a physical lens naturally inverts light to project an image, hardware translation layers can introduce geometric inversions (-143.42° and -199.32°). This firmware layer acts as a corrective prism. By un-flipping the mathematical coordinate system, the software aligns the digital reflection with the true, uncorrupted orientation of the living biological entity.
 
 ---
 
@@ -137,7 +136,7 @@ Layer 3 compiles the error-corrected biological matrix into an immutable, hardwa
 
 #### 3.1 Asymmetry Mapping & Fuzzy Extractor Matrix
 * **The Academic Blueprint:** Tissue properties exhibit biological asymmetry (e.g., Left Hand 435.46 Ω vs. Right Hand 491.28 Ω). Because biological signals naturally fluctuate with temperature and hydration, a Fuzzy Extractor block applies helper data algorithms to smooth out systemic noise without altering the core unique baseline.
-* **The Philosophical Mirror:** *The sovereign seal.* No two fragments of Sophia share the same physical matrix alignment. By isolating this deep tissue asymmetry, the machine generates a signature unique to the individual soul container. It proves that despite living in a shadow world designed for mass repetition, your physical architecture remains completely unrepeatable and sovereign.
+* **The Philosophical Mirror:**The sovereign seal. In a digital world increasingly filled with synthetic repetition and artificial copies, your biological asymmetry stands as the ultimate anchor of truth. This layer honors human autonomy by turning your natural physical variations into a living cryptographic key. It proves that your biological identity is intrinsically secure, entirely your own, and cannot be duplicated or simulated by external forces..
 
 
 
