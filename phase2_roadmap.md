@@ -19,9 +19,11 @@ To ensure maximum data integrity and prevent encoding errors into complex firmwa
 * **The Problem:** The initial bipolar/3-wire setup was heavily confounded by skin-surface contact impedance and interference at the electrode-tissue interface.
 * **The Solution:** Phase 2 implements a formal **tetrapolar array configuration**. For every channel measurement, two dedicated pins will drive the AC excitation current, while two entirely separate pins will sense the resulting voltage drop. This ensures contact impedance drops completely out of the sensed voltage, unlocking pristine data from deep sub-surface tissue layers.
 
-### 2. Micro-Topographical Hardware Upgrades
-* **Sensor Form Factor:** Phasing out sharp, high-pressure sub-millimeter pogo pin tips to prevent uneven localized pressure gradients (1 to 2.5 MPa). The stabilizer interface will transition to **flat metal pads on a flexible PCB (Flex-PCB)** to match natural anatomical curves gently.
-* **Sweat Film & Lateral Crosstalk Mitigation:** To eliminate lateral electrical conduction through the stratum corneum and sweat films, a thin **silicone isolation barrier** will be layered over the Flex-PCB, with micro-apertures punched directly over the active flat sensor pads.
+### 2. Standardized Uniform Mirrored Grid Geometry
+
+* **The Problem:** Designing asymmetrical layouts customized to specific anatomical palm creases introduces too many physical variables and increases manufacturing complexity.
+
+* **The Solution:** Phase 2 implements a single, standardized, uniform-pitch grid array across both hands (perfectly mirrored). Instead of building customized hardware shapes, the physical array will remain uniform. The unique creases and boundaries of individual palmar surfaces will be registered onto the grid afterward via software analysis, greatly simplifying hardware fabrication while maximizing spatial comparability.
 
 ### 3. Safety & Calibration Protocols
 * **DC Blocking Enforcements:** Incorporating physical, hardware-level inline DC-blocking capacitors on all driving leads to ensure absolute human safety during benchtop live evaluations.
