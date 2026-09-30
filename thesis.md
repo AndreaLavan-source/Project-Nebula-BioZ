@@ -353,30 +353,3 @@ The Autonomic Activation Layer (Resistance Tracking): Processes paths of low res
 The Cellular Structure Layer (Capacitance Tracking): Processes paths of high capacitive phase-delay. This module maps the stable, protective geometric architecture of intact cellular lipid bilayers, isolating deep anatomical traits that are highly resilient against external simulation or environmental noise.
 By compiling these synchronized arrays, the high-level processing software transforms a raw multi-channel AC data sweep into a highly accurate, cryptographic biological signature completely unique to the individual's localized tissue boundaries.
 
-# CHAPTER 4: RESULTS AND BENCHTOP VALIDATION
-## 4.1 Experimental Methodology and Setup
-The performance of the developed AC bio-impedance measurement system was evaluated via a Single-Subject Technical Pilot Evaluation. The primary objective was to validate the instrument's structural stability, electrical isolation, and active tracking capabilities under the influence of live, real-time biological noise and transient signal drifting. A healthy volunteer served as a dynamic biological test load. To ensure absolute human safety, all testing profiles were run with the active hardware current-limiting protection circuit strictly clamped to ≤ 10 μA.
-+------------------+--------+------------------+---------------------+
-
-| Test Profile     | Freq.  | Resistance (R)   | Phase Angle (\theta)|
-+------------------+--------+------------------+---------------------+
-
-| 1. Baseline Dry  | 50 kHz | 343.89 \Omega    | 181.39° (Unfiltered)|
-| 2. Therm./Moist. | 50 kHz | 272.85 \Omega    | 183.04° (Unfiltered)|
-| 3. Deep Membrane | 100 kHz| 338.99 \Omega    | -151.461° (Capac.)  |
-+------------------+--------+------------------+---------------------+
-## 4.2 Baseline and Dynamic Tissue Responsiveness (50 kHz Profile)
-Initial baseline metrics were captured under a high-impedance dry skin state using an excitation profile configured at 50,000 Hz (50 kHz), a 300 mV amplitude, and a data-capture resolution of 10 sampling points. The instrumentation demonstrated highly stable circuit behavior, yielding a baseline tissue impedance magnitude of 343.89 Ω and a concurrent phase tracking angle of 181.39° (reflecting the uncorrected hardware inversion envelope).
-To evaluate the system's responsiveness to dynamic somatic shifts, localized thermal friction and surface moisture variations were induced on the biological load:
-The Response: The developed instrumentation successfully captured real-time responsive shifts across the active matrix nodes.
-The Data: The system tracked a sharp impedance magnitude reduction down to 272.85 Ω, caused by the sudden influx of highly conductive, localized moisture within the epidermal sweat ducts. Concurrently, the phase angle shifted responsively to 183.04°.
-This test successfully validates the system's ability to map real-time autonomic activation profiles without signal cross-talk or grounding loop bleedout.
-## 4.3 Advanced Multi-Frequency Parameterization (100 kHz Profile)
-To evaluate the system's capacity for deep cellular interrogation, the parameterization profile was escalated to 100,000 Hz (100 kHz) at a 600 mV amplitude. Increasing the frequency reduces the overall capacitive reactance of the outer stratum corneum, allowing the AC waveform to effortlessly penetrate through the cellular lipid bilayers rather than tracking superficially around them.
-Under this deep-penetration profile, the system recorded a baseline tissue magnitude drop to 338.99 Ω. More importantly, the higher excitation frequency forced the phase angle into a highly stable capacitive negative envelope at -151.461°.
-[Raw Vector Input] ---> [Atan2 Rectangular-to-Polar Conversion] 
-                       |
-                       v (Raw Output: -143.42° Hardware Distortion)
-[Quadrant Inversion Filter] ---> [Output: -14.32° True Biological Value]
-When processed through the Layer 2 firmware DSP quadrant inversion filter, this systematic phase artifact was un-flipped to reveal an authentic, stabilized biological phase shift of -14.32°. This successfully proves that the instrumentation is capable of bypassing physical skin artifacts to isolate the true capacitive properties of deep cellular structures, establishing a functional technical proof-of-concept for unique biometric cryptographic verification.
-
