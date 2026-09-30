@@ -50,3 +50,11 @@ To understand the architecture of **Project Nebula**, we must bridge the rigid d
 ### 5. Tetrapolar Sensing (4-Pin Isolation)
 * **The Academic View:** Separating the current-driving electrode pair from the voltage-sensing electrode pair to eliminate electrode contact impedance.
 * **The Philosophical Mirror:** *The clear-eyed observer.* In common bipolar systems, wires clash by trying to inject current and sense responses at the exact same physical spot, creating massive surface distortion. A 4-pin configuration separates duties: two pins softly whisper current into the deep tissue, while two separate pins sit back quietly to observe the internal truth without surface interference.
+
+### 6. The 128-Node Symmetrical AC Matrix
+* **The Academic View:** A high-density, multi-channel switching array arranged in geometric concentric patterns to sequentially map localized tissue impedance across distinct anatomical coordinates.
+* **The Philosophical Mirror:** *The map of the shattered mirror.* Mainstream sensors look at the hand as one bulk mass, blinding themselves to details. The 128-node matrix splits the palm into an intentional sacred geometry of coordinates. It functions as a biological camera, tracking how individual fragments of tissue vary across the hand, creating an un-fakable, living cryptographic signature out of your body's natural asymmetry.
+
+### 7. Hardware Safety Loops (Current Clamping)
+* **The Academic View:** Active isolation circuitry and software limits strictly confining injection current amplitudes to safe, sub-sensory medical thresholds (≤ 10 μA).
+* **The Philosophical Mirror:** *The boundary of gentle interaction.* To observe a system, you must not destroy it. The safety loop ensures that the probing AC wave never overwhelms or shocks the body's delicate internal ecology. It keeps the hardware's conversation with the cells incredibly quiet and non-invasive, preserving the pure state of the biological spark while collecting raw mathematical truth.
