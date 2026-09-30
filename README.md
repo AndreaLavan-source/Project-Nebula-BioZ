@@ -82,32 +82,43 @@ When **Project Nebula** processes the multi-channel AC data sweeps, it renders a
 
 ### 🏢 LAYER 1: THE PHYSCIAL RESISTANCE & EXCITATION INTERFACE (Somatic & Hardware Layer)
 Layer 1 handles the raw, physical boundary where the instrumentation meets the human body. It is responsible for safe signal injection, isolated routing through the concentric node array, and high-precision analog signal conditioning. 
+
+```text
 +-------------------------------------------------------------+
-|              BIOLOGICAL TEST LOAD (The Hand)                |
+
+|               BIOLOGICAL TEST LOAD (The Hand)               |
 +-------------------------------------------------------------+
-│ (Current Injection: I+ / I-)
-▼ (Voltage Sense: V+ / V-)
+                              │
+                              ▼ (Current Injection: I+ / I-)
+                              ▲ (Voltage Sense: V+ / V-)
 +-------------------------------------------------------------+
+
 | 1.1 TETRAPOLAR ELECTRODE MATRIX                             |
 |     (128 Concentric Switching Nodes)                        |
 +-------------------------------------------------------------+
-│
-▼ Dual Differential Pathways
+                              │
+                              ▼ Dual Differential Pathways
 +-------------------------------------------------------------+
+
 | 1.2 HARDWARE ISOLATION & PASSIVE AMBIENT FILTERS            |
 +-------------------------------------------------------------+
-│
-▼ Isolated AC Waveforms
+                              │
+                              ▼ Isolated AC Waveforms
 +-------------------------------------------------------------+
+
 | 1.3 ANALOG FRONT END (AFE) ARCHITECTURE (EVAL-AD5940BIOZ)   |
 |     - Waveform Generator (50 kHz - 100 kHz Sinusoid)        |
-|     - Active Hardware Current-Limiting Circuit (≤ 10 µA)   |
+|     - Active Hardware Current-Limiting Circuit (≤ 10 µA)    |
 |     - High-Speed Transimpedance Amplifier (TIA)             |
 |     - Concurrent DFT Phase Engine                           |
 +-------------------------------------------------------------+
-│
-▼ Digitized Complex Impedance Data (Real / Imaginary / Phase)
-[ To Layer 2: Firmware & DSP Pipeline ]
+                              │
+                              ▼ Digitized Complex Impedance Data
+                                (Real / Imaginary / Phase)
+
+             [ To Layer 2: Firmware & DSP Pipeline ]
+```
+
 
 #### 1.1 The Tetrapolar Electrode Matrix (The Concentric Arrays)
 * **The Academic Blueprint:** Utilizing a customized multi-channel multiplexing network, the system sequentially routes differential current and voltage paths across 128 symmetrical coordinates mapped to localized tissue zones. By isolating the injection pair (I+, I-) from the sensing pair (V+, V-), contact impedance errors from dry or high-resistance epidermal layers are completely eliminated.
