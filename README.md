@@ -58,3 +58,9 @@ To understand the architecture of **Project Nebula**, we must bridge the rigid d
 ### 7. Hardware Safety Loops (Current Clamping)
 * **The Academic View:** Active isolation circuitry and software limits strictly confining injection current amplitudes to safe, sub-sensory medical thresholds (≤ 10 μA).
 * **The Philosophical Mirror:** *The boundary of gentle interaction.* To observe a system, you must not destroy it. The safety loop ensures that the probing AC wave never overwhelms or shocks the body's delicate internal ecology. It keeps the hardware's conversation with the cells incredibly quiet and non-invasive, preserving the pure state of the biological spark while collecting raw mathematical truth.
+
+---
+
+## 🏗️ System Architecture Outline
+
+Project Nebula operates across three distinct operational layers, moving raw energy from the biological spark into a secure cryptographic payload.
