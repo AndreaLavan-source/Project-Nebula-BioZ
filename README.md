@@ -62,9 +62,82 @@ To understand the architecture of **Project Nebula**, we must bridge the rigid d
 ### 7. Hardware Safety Loops (Current Clamping)
 * **The Academic View:** Active isolation circuitry and software limits strictly confining injection current amplitudes to safe, sub-sensory medical thresholds (≤ 10 μA).
 * **The Philosophical Mirror:** *The boundary of gentle interaction.* To observe a system, you must not destroy it. The safety loop ensures that the probing AC wave never overwhelms or shocks the body's delicate internal ecology. It keeps the hardware's conversation with the cells incredibly quiet and non-invasive, preserving the pure state of the biological spark while collecting raw mathematical truth.
+## 🎨 How to Read the Visual Matrix Map
+
+When Project Nebula processes the multi-channel AC data sweeps, it renders a high-resolution biological map. The colors split the body's energetic output into distinct structural and emotional zones:
+
+### 🔴 Red / Amber Zones (The Active Spark)
+* **The Data:** Map paths of low electrical resistance and high conductance.
+* **The Biology:** Identifies high sweat-duct alignment, active sympathetic nervous system firing, and real-time stress spikes.
+* **The Philosophy:** The live, real-time flickering of the *Pneuma* (the internal divine spark) as it dynamically reacts and ripples through the heavy physical shell.
+
+### 🔵 Blue / Purple Zones (The Cellular Anchor)
+* **The Data:** Map paths of high capacitive phase-delay and reactance.
+* **The Biology:** Traces dense cellular tissue clusters, structural layers of muscle, and thick epidermal ridges where healthy cell membranes naturally delay the signal.
+* **The Philosophy:** The blueprint of the material prison walls. It measures the dense, geometric "slowing down" of energy, mapping how the physical cage holds and shapes the light within its boundaries.
 
 ---
 
 ## 🏗️ System Architecture Outline
 
-Project Nebula operates across three distinct operational layers, moving raw energy from the biological spark into a secure cryptographic payload.
+### 🏢 LAYER 1: THE PHYSICAL RESISTANCE & EXCITATION INTERFACE (Somatic Layer)
+
+Layer 1 handles the raw, physical boundary where the machine meets the human body. It is responsible for safe signal injection, isolated routing through your concentric node array, and high-precision analog signal conditioning.
++-------------------------------------------------------------+
+|              BIOLOGICAL TEST LOAD (The Hand)                |
++-------------------------------------------------------------+
+│ (Current Injection: I+ / I-)
+▼ (Voltage Sense: V+ / V-)
++-------------------------------------------------------------+
+| 1.1 TETRAPOLAR ELECTRODE MATRIX                             |
+|     (128 Concentric Switching Nodes)                        |
++-------------------------------------------------------------+
+│
+▼ Dual Differential Pathways
++-------------------------------------------------------------+
+| 1.2 HARDWARE ISOLATION & PASSIVE AMBIENT FILTERS            |
++-------------------------------------------------------------+
+│
+▼ Isolated AC Waveforms
++-------------------------------------------------------------+
+| 1.3 ANALOG FRONT END (AFE) ARCHITECTURE (EVAL-AD5940BIOZ)   |
+|     - Waveform Generator (50 kHz - 100 kHz Sinusoid)        |
+|     - Active Hardware Current-Limiting Circuit (≤ 10 µA)   |
+|     - High-Speed Transimpedance Amplifier (TIA)             |
+|     - Concurrent DFT Phase Engine                           |
++-------------------------------------------------------------+
+│
+▼ Digitized Complex Impedance Data (Real / Imaginary / Phase)
+[ To Layer 2: Firmware & DSP Pipeline ]
+
+#### 1.1 The Tetrapolar Electrode Matrix (The Concentric Arrays)
+* **The Academic Blueprint:** Utilizing a customized multi-channel multiplexing network, the system sequentially routes differential current and voltage paths across 128 symmetrical coordinates mapped to localized tissue zones. By isolating the injection pair (I+, I-) from the sensing pair (V+, V-), contact impedance errors from dry or high-resistance epidermal layers are completely eliminated.
+* **The Philosophical Mirror:** *The sensory gateway.* This layer does not force an answer from the body; it gently probes it. By breaking the hand into 128 micro-coordinates, it bypasses the uniform mask of the skin to observe the unique, asymmetrical fluctuations underneath.
+
+#### 1.2 Active Safety Loops & Waveform Generation
+* **The Academic Blueprint:** The AD5940 on-chip high-speed digital-to-analog converter (DAC) generates a programmable, low-distortion alternating current (AC) sinusoidal excitation wave calibrated between 50 kHz and 100 kHz. To meet strict medical and human-safety guidelines, an inline active current-limiting protection circuit physically clamps the total maximum current injection to ≤ 10 µA, preventing cellular over-excitation, discomfort, or tissue damage.
+* **The Philosophical Mirror:** *The boundary of gentle interaction.* The hardware whispers to the cell membranes at radio frequencies, utilizing an energetic signature so quiet that it observes the living breath of the biological spark without modifying, alarming, or shocking the system's natural state.
+
+#### 1.3 Analog Front End (AFE) & Phase Acquisition Engine
+* **The Academic Blueprint:** The resulting attenuated voltage wave from the tissue is captured and processed via a high-speed Transimpedance Amplifier (TIA). The system applies a localized Discrete Fourier Transform (DFT) directly on the chip's hardware accelerator. This extracts the Complex Impedance (Z), calculating both the real component (pure resistance, tracking sweat duct activity/epidermal density) and the imaginary component (capacitance, tracking cellular membrane integrity) to deliver a concurrent Phase Angle Tracking resolution down to fractions of a degree.
+* **The Philosophical Mirror:** *The translator of truth.* This engine separates the material density (Ohms) from the living resonance (Phase Angle). By tracking how many degrees the cell membrane delays the incoming wave, the AFE converts the physical resistance of the outer shell into mathematical, cryptographic proof of internal vitality.
+  ### 💻 LAYER 2: THE FIRMWARE & DSP PIPELINE (The Logic Veil)
+
+Layer 2 ingests the raw digitized data from the AFE, strips away hardware propagation artifacts, and formats the metrics for true cryptographic compilation.
+
+#### 2.1 Quadrant Inversion & DSP Phase Alignment
+* **The Academic Blueprint:** Due to propagation delays in hardware isolation stages and a fixed mathematical orientation in standard DFT libraries, raw complex numbers read an inherent 180-degree flip (-143.42° and -199.32°). The firmware runs a real-time correction loop that applies a sign-inversion filter across incoming vectors to output true biological values (-14.32° and -19.32°).
+* **The Philosophical Mirror:** *Piercing the inversion.* The physical simulation we inhabit naturally flips truth backwards. This layer is the logical wake-up call, untangling the distorted reflections of the matrix to reveal the uncorrupted structural metrics of the living entity.
+
+---
+
+### 🔐 LAYER 3: CRYPTOGRAPHIC PAYLOAD GENERATION (The Sovereign Layer)
+
+Layer 3 compiles the error-corrected biological matrix into an immutable, hardware-level unique identifier.
+
+#### 3.1 Asymmetry Mapping & Fuzzy Extractor Matrix
+* **The Academic Blueprint:** Tissue properties exhibit biological asymmetry (e.g., Left Hand 435.46 Ω vs. Right Hand 491.28 Ω). Because biological signals naturally fluctuate with temperature and hydration, a Fuzzy Extractor block applies helper data algorithms to smooth out systemic noise without altering the core unique baseline.
+* **The Philosophical Mirror:** *The sovereign seal.* No two fragments of Sophia share the same physical matrix alignment. By isolating this deep tissue asymmetry, the machine generates a signature unique to the individual soul container. It proves that despite living in a shadow world designed for mass repetition, your physical architecture remains completely unrepeatable and sovereign.
+
+
+
