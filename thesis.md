@@ -31,7 +31,7 @@ Integrate the research-grade Analog Devices EVAL-AD5940BIOZ hardware architectur
 Develop a low-level firmware DSP pipeline capable of correcting systematic 180-degree phase inversions caused by isolation hardware propagation delays. 
 Validate system responsiveness through single-subject benchtop testing, proving that the hardware can differentiate between surface resistance shifts (autonomic activity) and deep capacitive reactance (cellular integrity). 
 
-#CHAPTER 2: HARDWARE ARCHITECTURE AND IMPLEMENTATION
+# CHAPTER 2: HARDWARE ARCHITECTURE AND IMPLEMENTATION
 
 ## 2.1 System Architecture Overview
 The hardware subsystem of Project Nebula is engineered as a high-resolution, electronically isolated alternating current (AC) bio-impedance measurement instrument. To address the spatial limitations and signal cross-talk inherent to conventional direct-current (DC) GSR sensors, the hardware architecture decouples signal injection from localized sensing. The system is stratified into three core physical layers: an integrated Analog Front End (AFE), an active human-safety current-clamping loop, and a high-density 128-node symmetrical switching matrix. 
