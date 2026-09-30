@@ -290,4 +290,67 @@ XC
 𝑋𝐶): Quantifies capacitive reactance, tracking cellular membrane integrity, lipid bilayer charge separation, and concurrent phase-delay.
 The AFE outputs these values concurrently, allowing the system to deliver real-time Phase Angle Tracking resolution down to fractions of a single degree. This dual tracking capability forms the hardware basis for high-resolution biological mapping and unique biometric cryptographic identity generation.
 
+# CHAPTER 3: SOFTWARE ARCHITECTURE AND DIGITAL SIGNAL PROCESSING
+
+## 3.1 Software Infrastructure Overview
+The software ecosystem of Project Nebula is engineered to ingest raw, high-frequency digitized packets from the Analog Front End (AFE), strip away systematic instrumentation errors, and reconstruct the biological data into a multi-channel topographical matrix. The software architecture is bifurcated into two primary execution planes: low-level firmware running natively on the microcontroller core, and a high-level digital signal processing (DSP) pipeline that handles spatial mapping and biometric normalization.
+       +--------------------------------------------------------+
+
+       |       RAW ANALOG FRONT END DATA (EVAL-AD5940BIOZ)       |
+       +--------------------------------------------------------+
+                                    |
+                                    v (SPI Bus: Raw Real/Imaginary Vectors)
+       +--------------------------------------------------------+
+
+       |   3.2 LOW-LEVEL HARDWARE INTERFACE & SPI PROTOCOL      |
+       |       - Synchronous Register Interrogation             |
+       |       - Interrupt-Driven 128-Node Matrix Switching     |
+       +--------------------------------------------------------+
+                                    |
+                                    v (Digitized Complex Byte Streams)
+       +--------------------------------------------------------+
+
+       |   3.3 FIRMWARE DSP & QUADRANT INVERSION FILTER         |
+       |       - Real-Time Rectangular-to-Polar Vectoring       |
+       |       - Systemic Phase Inversion Correction Loop       |
+       +--------------------------------------------------------+
+                                    |
+                                    v (Normalized Ohms & Accurate Phase Angles)
+       +--------------------------------------------------------+
+
+       |   3.4 HIGH-LEVEL TOPOGRAPHICAL COORDINATE MAPPING      |
+       |       - 128-Channel Matrix Reassembly                  |
+       |       - Adaptive Geometrical Normalization Matrix       |
+       +--------------------------------------------------------+
+
+## 3.2 Low-Level Hardware Interface and Matrix Control
+The firmware interacts with the EVAL-AD5940BIOZ hardware layer via a high-speed, synchronous Serial Peripheral Interface (SPI) bus configuration. The software loop is built on an interrupt-driven state machine to ensure tight timing synchronization with the hardware Discrete Fourier Transform (DFT) accelerator.
+The software routine coordinates the following execution sequence:
+"Node Addressing:" The microcontroller asserts control signals to the multi-channel analog multiplexer network, sequentially routing the current and voltage electrode pairs to one of the 128 anatomical coordinates.
+Excitation Triggering: The firmware writes to the AFE register map to initiate a multi-frequency AC sinusoidal excitation wave (50 kHz to 100 kHz).
+Data Ingestion: Upon completion of the hardware-accelerated DFT sweep, an external interrupt pin (INT) alerts the firmware that the complex data buffer is full. The firmware reads the raw, raw 16-bit real component and imaginary component (Rraw) and imaginary component (Iraw) registers via the SPI bus.
+
+## 3.3 Firmware DSP and the Quadrant Inversion Filter
+A persistent challenge in high-frequency bio-impedance measurement stems from systematic phase shifts introduced by optoelectronic isolation buffers and hardware propagation delays. In the developed instrumentation architecture, these hardware latency factors induce an inherent 180-degree phase flip, forcing raw biological vectors into a mathematically reversed quadrant (yielding raw phase angle readings between -140° and -200°).
+To resolve this artifact in real time, the firmware executes a specialized Quadrant Inversion Correction Loop. The raw vectors are first processed through a rectangular-to-polar conversion matrix to calculate the base impedance magnitude (|Z|) and raw phase angle (
+θraw
+𝜃𝑟𝑎𝑤) using equations (3.1) and (3.2):
+
+$|Z| = \sqrt{R_{raw}^2 + I_{raw}^2}$
+
+$\theta_{raw} = \tan^{-1}(I_{raw} / R_{raw})$
+
+Once the raw phase angle is isolated, the firmware applies a digital corrective filter. If the raw vector maps to the inverted lower hemisphere (𝜃𝑟𝑎𝑤<−90∘), the sign-inversion correction filter shifts the vector into its true biological envelope:
+
+
+𝜃𝑐𝑜𝑟𝑟𝑒𝑐𝑡𝑒𝑑=𝜃𝑟𝑎𝑤+180∘
+This real-time correction loop outputs accurate, uncorrupted biological values (e.g., transforming a systematic -143.42° artifact into a true physiological phase angle of -14.32°). This allows the software to track authentic cellular membrane capacitance without propagation errors skewing the metrics.
+
+## 3.4 High-Level Topographical Coordinate Mapping
+Once the corrected phase angles and material resistance values are extracted for all 128 nodes, the software compiles the independent data channels into a complete biological map.
+The high-level software utilizes an adaptive spatial processing module to handle physiological variations in hand scale and structural asymmetry. The map categorizes the data into two primary physiological tracking zones:
+The Autonomic Activation Layer (Resistance Tracking): Processes paths of low resistance and high conductance. This module tracks real-time sympathetic nervous system activity and active sweat-duct alignment, capturing the fluidic, volatile changes in user state.
+The Cellular Structure Layer (Capacitance Tracking): Processes paths of high capacitive phase-delay. This module maps the stable, protective geometric architecture of intact cellular lipid bilayers, isolating deep anatomical traits that are highly resilient against external simulation or environmental noise.
+By compiling these synchronized arrays, the high-level processing software transforms a raw multi-channel AC data sweep into a highly accurate, cryptographic biological signature completely unique to the individual's localized tissue boundaries.
+
 
