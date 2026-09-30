@@ -27,6 +27,8 @@ The hardware is validated. The anatomical layout is designed. **I am currently s
 If you are passionate about biomedical engineering, advanced biosensors, or cryptographic biometrics, please open an Issue, submit a Pull Request, or reach out!
 
 
+
+
 "Note: This glossary serves as a conceptual framework mapping the rigorous engineering principles of project Nebula to historical, philosophical, and bio-energetic traditions."
 
 ## 📖 Project Glossary: Bridging Philosophy & Bio-Sensing Instrumentation
