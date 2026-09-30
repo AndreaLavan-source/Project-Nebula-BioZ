@@ -10,7 +10,7 @@ All notable changes to **Project Nebula** will be documented in this file. This 
 - **Multi-Frequency Parameterization:** Integrated advanced 100,000 Hz (100 kHz) and 600 mV amplitude testing profiles to trigger deep cellular membrane penetration.
 - **System Mapping Documentation:** Added the high-resolution localized electrodermal mapping documentation detailing Autonomic Response Profiles (Red/Amber) and Cellular Matrix Anchors (Blue/Purple).
 - **Academic Abstract:** Included the formalized engineering abstract (`THESIS_ABSTRACT.md`) for university review alignment.
-
+- **Roadmap Integration:** Outlined camera-based computer vision topology framework for adaptive 128-node grid scaling.
 ### 🔄 Changed
 - **Safety Loops:** Optimized the active hardware current-limiting protection circuit to ensure it is strictly and physically clamped to ≤ 10 μA across all active multiplexer nodes.
 - **Documentation Glossary:** Sanitized spiritual/alchemy-adjacent terminology to industry-standard biometric, physiological, and system engineering nomenclature.
