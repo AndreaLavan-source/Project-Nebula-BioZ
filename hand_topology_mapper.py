@@ -17,13 +17,13 @@ class AdaptiveGridMapper:
         max_coords = np.max(landmarks, axis=0)
         hand_scale = max_coords - min_coords
         
-        # Prevent division by zero errors in static states
-        if np.any(hand_scale == 0):
-            return landmarks
+   # Prevent division by zero errors by replacing 0 scales with 1.0
+hand_scale = np.where(hand_scale == 0, 1.0, hand_scale)
 
-        # Perform min-max normalization to map hand into a standard 0.0 to 1.0 geometric space
-        normalized_grid = (landmarks - min_coords) / hand_scale
-        return normalized_grid
+# Perform min-max normalization to map hand into a standard 0.0 to 1.0 geometric space
+normalized_grid = (landmarks - min_coords) / hand_scale
+
+return normalized_grid
 
     def generate_multiplexer_map(self, normalized_grid):
         """
