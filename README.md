@@ -27,6 +27,8 @@ The hardware is validated. The anatomical layout is designed. **I am currently s
 If you are passionate about biomedical engineering, advanced biosensors, or cryptographic biometrics, please open an Issue, submit a Pull Request, or reach out!
 
 
+"Note: This glossary serves as a conceptual framework mapping the rigorous engineering principles of project Nebula to historical, philosophical, and bio-energetic traditions. 
+
 ## 📖 Project Glossary: Bridging Philosophy & Bio-Sensing Instrumentation
 
 To understand the architecture of **Project Nebula**, we must bridge the rigid definitions of academic instrumentation with the foundational philosophies of living biological systems.
@@ -53,7 +55,7 @@ To understand the architecture of **Project Nebula**, we must bridge the rigid d
 
 ### 6. The 128-Node Symmetrical AC Matrix
 * **The Academic View:** A high-density, multi-channel switching array arranged in geometric concentric patterns to sequentially map localized tissue impedance across distinct anatomical coordinates.
-* **The Philosophical Mirror:** *The map of the shattered mirror.* Mainstream sensors look at the hand as one bulk mass, blinding themselves to details. The 128-node matrix splits the palm into an intentional sacred geometry of coordinates. It functions as a biological camera, tracking how individual fragments of tissue vary across the hand, creating an un-fakable, living cryptographic signature out of your body's natural asymmetry.
+* **The Philosophical Mirror:** *The map of the shattered mirror.* Mainstream sensors look at the hand as one bulk mass, blinding themselves to details. The 128-node matrix splits the palm into an intentional sacred geometry of coordinates. It functions as a biological camera, tracking how individual fragments of tissue vary across the hand, creating a highly secure, living cryptographic signature out of your body's natural asymmetry.
 
 ### 7. Hardware Safety Loops (Current Clamping)
 * **The Academic View:** Active isolation circuitry and software limits strictly confining injection current amplitudes to safe, sub-sensory medical thresholds (≤ 10 μA).
