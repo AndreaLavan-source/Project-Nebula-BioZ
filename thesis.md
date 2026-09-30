@@ -2,7 +2,7 @@ A Custom Isolated Multi-Channel Ac Bio-Impedance Measurement Architecture
 
 # CHAPTER 1: INTRODUCTION
 
-1.1 Background, Motivation, and Philosophical Framework
+## 1.1 Background, Motivation, and Philosophical Framework
 The foundation of this research is rooted in a fundamental paradox: human beings are dynamic, non-linear biological entities, yet modern diagnostic instrumentation treats the body as a static, uniform mechanical load. Standard biometric frameworks look at a human hand or palm as a generic surface, completely blinding themselves to the deep, localized structural variations unique to the individual.
 This thesis bridges that gap by using high-resolution alternating current (AC) bio-impedance to map individual biological asymmetry.
 Every human body possesses a deeply unique micro-topographical network of cellular boundaries, fluid pathways, and electrical delays. When we look at standard physiological measurements, we are looking at a fractured, generalized image—a shattered mirror of human vitality. By engineering a custom 128-node symmetrical matrix, this project seeks to look past the surface noise of the physical shell and reconstruct those shattered fragments into a coherent, un-spoofable signature of living presence. The motivation of this work is to demonstrate that the subtle, invisible internal states of human consciousness and vitality leave an exact, quantifiable physical print on the material body. To translate this internal truth into modern reality, we must learn the precise physical laws of circuit isolation, signal phase-delay, and micro-electronics, using the tools of silicon to honor the architecture of life.
