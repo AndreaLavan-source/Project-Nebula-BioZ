@@ -214,7 +214,7 @@ To achieve a standardized, repeatable dataset, the physical testing procedure fo
 ### 3. Inducing Somatic Arousal/Moisture (Induced_Moisture)
 * **Action:** Remove hand from the matrix. Rub hands together vigorously for 30 seconds (thermal friction) to stimulate local circulation and active sudomotor sweat-duct alignment.
 * **Action:** Replace palm back on the grid to record the dynamic somatic activation profile.
-| +------------------+--------+------------------+---------------------+
+ +------------------+--------+------------------+---------------------+
 
 | Test Profile     | Freq.  | Resistance (R)   | Phase Angle (\theta)|
 +------------------+--------+------------------+---------------------+
