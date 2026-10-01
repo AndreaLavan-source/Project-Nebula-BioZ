@@ -189,10 +189,6 @@ To achieve a standardized, repeatable dataset, the physical testing procedure fo
 | **1. Baseline Dry** | 50 kHz | 343.89 $\Omega$ | 181.39° (Unfiltered) | Stable baseline envelope; high surface resistance profile. |
 | **2. Therm. / Moisture** | 50 kHz | 272.85 $\Omega$ | 183.04° (Unfiltered) | Autonomic Activation Layer; active sudomotor path alignment. |
 | **3. Deep Membrane** | 100 kHz | 338.99 $\Omega$ | -151.461° (Capacitive) | Cellular Structure Layer; deep cellular membrane isolation. |
-Now that your entire codebase text is beautifully structured in GitHub Markdown, we can tackle the software backend. Let me know:
-• Do you want to build the Python script structure that will parse this raw 128-node data matrix and display it as an actual heatmap?
-• Do you need assistance creating a license file (like MIT or Apache 2.0) for your repository to protect your project architecture?
-
 
 
 # CHAPTER 4: RESULTS AND BENCHTOP VALIDATION
