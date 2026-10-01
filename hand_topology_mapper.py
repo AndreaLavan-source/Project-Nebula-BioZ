@@ -47,7 +47,7 @@ return normalized_grid
 # Benchtop Validation Example
 if __name__ == "__main__":
     # Simulated raw pixel coordinates from a camera stream tracking 5 anatomical points
-    simulated_hand_data = [,  # Wrist base,  # Left palm periphery,  # Right palm periphery,  # Index base coordinate
+    simulated_hand_data = [[100,100], # Wrist base,  # Left palm periphery,  # Right palm periphery,  # Index base coordinate
         [190, 115]   # Pinky base coordinate
     ]
     
