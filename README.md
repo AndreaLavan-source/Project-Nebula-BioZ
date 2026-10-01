@@ -19,6 +19,7 @@ Operating under an active hardware safety loop strictly clamped to **≤ 10 μA*
 The complete 5-chapter academic framework, covering the Micro-Topographical Node Configuration, Safety Architecture, and Technical Pilot Evaluation is available in this repository. 
 * [View Full Thesis Text](./thesis.md)
 * [view Phase 2 Engineering roadmap](./phase2_roadmap.md)
+* 📖 [View the Philosophy & Bio-Sensing Theory Guide](./THEORY.md)
 ## 🤝 The Ask: Seeking a Technical Co-Founder / Software Partner
 The hardware is validated. The anatomical layout is designed. **I am currently seeking a software engineer or mentor proficient in C++ and Python.**
 **Next Objectives:**
