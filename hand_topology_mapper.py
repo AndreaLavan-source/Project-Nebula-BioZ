@@ -1,4 +1,5 @@
 import numpy as np
+import math
 
 class AdaptiveGridMapper:
     def __init__(self, target_nodes=128):
@@ -35,7 +36,7 @@ return normalized_grid
             if i >= self.target_nodes:
                 break
             # Translate normalized coordinates directly into a target hardware channel address
-            channel_assignment = int(np.mean(coordinate) * 127)
+            channel_assignment = int(np.mean(coordinate) * 128), 127) 
             hardware_routing_table.append({
                 "node_index": i,
                 "spatial_vector": coordinate.tolist(),
