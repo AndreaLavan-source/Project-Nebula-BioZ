@@ -146,35 +146,29 @@ The Autonomic Activation Layer (Resistance Tracking): Processes paths of low res
 The Cellular Structure Layer (Capacitance Tracking): Processes paths of high capacitive phase-delay. This module maps the stable, protective geometric architecture of intact cellular lipid bilayers, isolating deep anatomical traits that are highly resilient against external simulation or environmental noise. 
 
 
-# 3.4 High-Level Topographical Coordinate Mapping and Geometrical Nodes
-# 3.4.1 Bilateral Topology and Macro-Crease Fluid Circuitry
-To ground the Autonomic Activation and Cellular Structure layers into empirical physical attributes, the high-level spatial processing module maps structural macro-creases as deterministic electrical pathways. Primary palmar flexure lines—specifically the linea vitalis (lifeline) and its proximal transverse connections—function as specialized, high-conductance subcutaneous pathways. Due to the mechanical stresses of palmar flexion, these pathways exhibit localized concentrations of sweat duct alignment and interstitial fluid. When interrogated by the high-frequency AC matrix sweep, these structural valleys present paths of significantly minimized impedance, acting effectively as baseline current-routing highways.
-       [LEFT HAND NODE]                     [RIGHT HAND NODE]
-    (Bilateral Symmetrical Base)         (Bilateral Symmetrical Base)
-                 ||                                   ||
-                 ||                                   ||
-                 \/                                   \/
-         [Central 'X' Node]               [Isolated Diamond Island]
-                 ||                                   ||
-                 ||                                   // \\
-                 \/                                  //   \\
-       (Singular Phase-Delay)                  [Highway X]  [Internal M-X]
-                                               (Linear)      (Core Capac.)
-The emergence of terminal tridents at the distal boundaries of these macro-creases marks a critical geometric transition zone.
-As a primary conductance pathway splits into a three-pronged terminal geometry, the injected current undergoes a multi-vector distribution. 
-This structural divergence forces the signal to branch across three distinct epidermal ridges simultaneously, effectively acting as a multi-channel biological splitter that distributes the workload across an expanded cellular membrane surface area.
+## 3.4 High-Level Topographical Coordinate Mapping and Geometrical Nodes
+## 3.4.1 Bilateral Topology and Flexure Line Fluid Circuitry
+To ground the autonomic activation and cellular structure layers into empirical physical attributes, the high-level spatial processing module maps structural palmar creases as deterministic electrical pathways. Primary palmer flexure lines- specifically the thenar crease (radial longitudinal crease),the proximal transverse crease, and their adjacent structural boundaries-function as specialized, high conductance subcutaneous pathways. Due to the mechanical stresses of continuous palmar flexion, these anatomical valleys exhibit localized concentrations of sweat duct alignment and increased interstitial fluid volume. When interrogated by the high-frequency AC matrix sweep, these structural depressions present paths of significantly minimized impedance, acting effectively as baseline current-routing highways.
+      [LEFT HAND NODE]                          [RIGHT HAND NODE]
+(Bilateral Symmetrical Base)              (Bilateral Symmetrical Base)
+           ||                                         ||
+           ||                                         ||
+         /    \                                     /    \
+  [Central 'X' Node]                    [Isolated Diamond Island]
+           ||                                       ||
+           ||                                      // \
+     [Highway X]                               [Internal M-X]
+      (Linear)                                 (Core Capacitive)
+The emergence of terminal tridents at the distal boundaries of these flexure lines marks a critical geometric transition zone. As a primary conductance pathway splits into a three-pronged terminal geometry, the injected current undergoes a multi-vector distribution. This structural divergence forces the signal to branch across three distinct epidermal ridges simultaneously, effectively acting as a multi-channel biological splitter that distributes the electrical workload across an expanded cellular membrane surface area.
 
-# 3.4.2 Cross-Linked Intersections and Structural "Highways"
-
-Near the proximal wrist boundary, a linear connecting crease transversely links the linea vitalis to the primary "Double-M" macro-configuration, creating a high-traffic biological current bus. When independent "X" intersections, triangles, or star clusters sit within this connecting channel, they introduce localized points of extreme cellular compression.
-From an instrumentation perspective, these intersections disrupt uniform linear current flow. Because an "X" represents the physical collision of multi-directional epidermal ridges, the lipid bilayers within this intersection are densely packed. Operating under a 10 kHz tetrapolar AC sweep, these compressed membranes act as localized capacitive reservoirs. Rather than allowing current to pass freely, they momentarily absorb and delay the wave, forcing a sharp, predictable negative phase shift at that exact spatial coordinate.
-
-# 3.4.3 Bilateral Asymmetry and Cryptographic Entropy Analysis
-A critical validation of Project Nebula's cryptographic biometric generation lies in its mapping of bilateral asymmetry between the subject's left and right hands. While both hands share a mirrored macro-topology (the foundational layout of the lifelines, wrist highways, and Double-M grids), they deviate profoundly at the micro-topographical level:
-• Left Hand Configuration (Centralized Single-Point Delay): The left palm features a singular "X" node situated precisely at the center of the Double-M framework, creating a highly localized, sharp capacitive phase-delay bottleneck amidst an otherwise uniform resistive field.
-• Right Hand Configuration (Multi-Stage Cascaded Filter): The right palm exhibits a higher degree of geometric entropy, utilizing a cascaded macro-structure consisting of a triangle base funneling up into a trident prong, passing directly through an enclosed diamond formation flanked by two distinct "X" intersections (one in the highway channel, one nested inside the M-configuration).
-The right hand’s diamond structure functions as a naturally insulated bio-electrical island where boundary lines restrict lateral current bleed. Combined with the dual "X" nodes, this architecture forms a multi-stage reactive filter. As the AC wave sweeps sequentially through this region, it undergoes tiered modulation, translating natural human asymmetry into unforgeable biometric keys.
-
+## 3.4.2 Cross-Linked Intersections and Structural Pathways
+Near the proximal carpal (wrist) boundary, a linear connecting crease transversely links the thenar crease to the broader structural macro-configuration of the palm, creating a high-traffic biological current bus. When independent cross-linked intersections, triangular deltas, or ridge-star clusters sit within this connecting channel, they introduce localized zones of extreme epidermal tissue compression.
+From an instrumentation perspective, these intersections disrupt uniform linear current flow. Because a structural intersection represents the physical collision of multi-directional epidermal ridges, the lipid bilayers within these coordinate boundaries are densely packed. Operating under a 50 kHz to 100 kHz tetrapolar AC sweep, these compressed membranes behave as localized capacitive reservoirs. Rather than allowing current to pass freely, they momentarily store and delay the waveform, forcing a sharp, predictable negative phase shift at that exact spatial coordinate.
+## 3.4.3 Bilateral Asymmetry and Biometric Entropy Analysis
+A critical validation of Project Nebula's biometric identity generation lies in its mapping of bilateral asymmetry between the subject's left and right hands. While both extremities share a mirrored macro-topology (the foundational layout of primary flexure lines and structural pathways), they deviate profoundly at the micro-topographical level:
+Left Hand Configuration (Centralized Single-Point Delay): The left palm features a singular structural intersection node situated precisely at the center of the underlying crease framework, creating a highly localized, sharp capacitive phase-delay bottleneck amidst an otherwise uniform resistive field.
+Right Hand Configuration (Multi-Stage Cascaded Filter): The right palm exhibits a higher degree of geometric entropy, utilizing a cascaded macro-structure consisting of a triangular ridge delta funneling up into a three-pronged terminal ridge, passing directly through an enclosed, diamond-shaped epidermal island flanked by two distinct intersection nodes (one in the primary highway channel, one nested inside the inner structural grid).
+The right hand’s diamond structure functions as a naturally insulated bio-electrical island where morphological boundary lines restrict lateral current bleed. Combined with the dual multi-directional ridge nodes, this architecture forms a multi-stage reactive filter. As the AC wave sweeps sequentially through this region, it undergoes tiered modulation, translating natural human asymmetry into unforgeable biometric profiles.
 
 
 ## 4.0 Results and Benchtop Validation
