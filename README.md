@@ -161,11 +161,20 @@ To scale the 128-node symmetrical matrix across diverse anatomical structures (s
 * **The Execution Logic:** The software maps localized surface landmarks to dynamically configure, scale, and switch the hardware multiplexer array coordinates.
 * **The Architectural Objective:** This ensures precise, normalized anatomical tracking and consistent spatial data density regardless of subject scale or physical variations.
 
-## ⚖️ License & Sovereign Terms This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**. Please see the [LICENSE](./LICENSE) file for the full legal text.
-### 🌟 Project Nebula Preamble The AGPL-3.0 is a copyleft license designed specifically to ensure absolute architectural transparency. When any tech entity, developer, or organization builds upon or interacts with Project Nebula over a network, this license guarantees that all modifications, multiplexer array mappings, and digital signal processing pipelines remain completely open to the community.
-### 🔑 Key Requirements & Developer Guardrails * **Complete Copyleft:** If you modify, copy, or adapt this firmware, data schemas, or mathematical mapping code, you **must** release your modified source code under the same AGPL-3.0 license.
+## ⚖️ License & Sovereign Terms 
+This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**. Please see the [LICENSE](./LICENSE) file for the full legal text.
+
+### 🌟 Project Nebula Preamble 
+The AGPL-3.0 is a copyleft license designed specifically to ensure absolute architectural transparency. When any tech entity, developer, or organization builds upon or interacts with Project Nebula over a network, this license guarantees that all modifications, multiplexer array mappings, and digital signal processing pipelines remain completely open to the community.
+
+### 🔑 Key Requirements & Developer Guardrails
+
+* **Complete Copyleft:** If you modify, copy, or adapt this firmware, data schemas, or mathematical mapping code, you **must** release
+  your modified source code under the same AGPL-3.0 license.
+
 * **Network Interactivity Requirement:** If you host a modified version of this system on a server to process tomography data remotely, you must make the complete source code available to the users interacting with that service.
-*  * **Preserve Integrity:** All downstream instances must preserve original author credits, copyright indicators, and hardware mapping protocols intact.
+
+*   **Preserve Integrity:** All downstream instances must preserve original author credits, copyright indicators, and hardware mapping protocols intact.
 
 
 
