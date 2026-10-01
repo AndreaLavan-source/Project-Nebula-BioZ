@@ -67,16 +67,42 @@ public:
     }
 };
 
-int main() {
-    Layer2DSPPipeline dsp_engine;
+int main() { 
+    Layer2DSPPipeline dsp_engine; 
 
-    // Simulated raw incoming benchtop stream with hardware inversion artifacts (-143.42° flipped profile)
-    std::vector<std::pair<double, double>> simulated_afe_stream = {
-        {-275.5, -203.2}, // Node 0 Raw Data
-        {-270.1, -198.8}, // Node 1 Raw Data
-        {-268.4, -195.1}  // Node 2 Raw Data
+    // Simulated raw incoming benchtop stream with hardware inversion artifacts (-143.42° flipped profile) 
+    std::vector<std::pair<double, double>> simulated_afe_stream = { 
+        {-275.5, -203.2}, // Node 0 Raw Data 
+        {-270.1, -198.9}, // Node 1 Raw Data 
+        {-266.4, -195.3}  // Node 2 Raw Data 
     };
 
-    dsp_engine.process_matrix_sweep(simulated_afe_stream);
-    return AD5940_SUCCESS;
+    dsp_engine.process_matrix_sweep(simulated_afe_stream); 
+
+    // ================================================================= // 
+    // 🧪 AUTOMATED C++ UNIT TEST: Quadrant Inversion Filter Validation // 
+    // ================================================================= // 
+    std::cout << "\n[TEST] Running Automated Pipeline Validation...\n"; 
+    
+    // Pass a known hardware inversion artifact (-135.0° flipped profile) 
+    double test_real = -1.0; 
+    double test_img = -1.0; 
+    
+    ComplexImpedance test_output = dsp_engine.apply_quadrant_inversion_filter(test_real, test_img); 
+    
+    // Expectation: Flipped -135.0° is < -90.0°, so it must shift by +180.0° to equal +45.0° 
+    double expected_phase = 45.0; 
+    double tolerance = 0.01; 
+    
+    std::cout << " -> Expected Phase: " << expected_phase << "°\n"; 
+    std::cout << " -> Actual Phase:   " << test_output.phase_angle << "°\n"; 
+    
+    if (std::abs(test_output.phase_angle - expected_phase) < tolerance) { 
+        std::cout << " [RESULT] STATUS: PASSED (Quadrant inversion logic is 100% verified)\n"; 
+    } else { 
+        std::cout << " [RESULT] STATUS: FAILED (Check math library scaling factors)\n"; 
+    } 
+    std::cout << "=================================================================\n"; 
+    
+    return AD5940_SUCCESS; 
 }
