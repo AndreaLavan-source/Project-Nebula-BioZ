@@ -65,8 +65,23 @@
 > To ensure low-latency, deterministic control over the **EVAL-AD5940BIOZ** analog front-end, the host microcontroller must communicate via a dedicated **Serial Peripheral Interface (SPI)** bus configured to match the AD5940's hardware constraints:
 > 
 > * **SPI Mode:** **Mode 0** or **Mode 3** (The AD5940 supports both CPOL=0/CPHA=0 and CPOL=1/CPHA=1 protocols).
+> * For stable FIFO buffer streams, the host controller should explicitly force mode 0 
 > * **Clock Speed (SCLK):** Max **12.5 MHz** (Per the official Analog Devices datasheet constraints, the hardware is capped at 12.5 MHz due to strict 40ns minimum high/low pulse width limitations. An operational rate of 8 MHz to 10 MHz is highly recommended for stable bench-testing with standard jumper wires to mitigate signal reflections.) 
 > * **Data Order:** **MSB First** (Most Significant Bit sent first).
 > * **Chip Select (CS):** Active-Low. Must be asserted before transmitting commands and de-asserted to flush data frames.
 > * **Interrupt Pin (IRQ):** Connected to an external hardware interrupt line on the host controller to handle high-speed **Data Ready** flags asynchronously from the AD5940 FIFO buffer.
+
+
+* Interrupt Pin (IRQ): Connected to an external hardware interrupt line on the host controller to handle high-speed Data Ready flags asynchronously from the AD5940 FIFO buffer.
+
+### 📌 Host Microcontroller to AD5940 Pin Map
+To ensure reliable communication and stable edge-triggered interrupts, wire the host controller to the EVAL-AD5940BIOZ platform using the following layout:
+* **SCLK** ──> Host SPI Clock (Pin SCK)
+* **MOSI** ──> Host SPI Controller Out (Pin MOSI)
+* **MISO** ──> Host SPI Controller In (Pin MISO)
+* **CS**   ──> Host Chip Select (Dedicated GPIO)
+* **IRQ**  ──> Host External Interrupt Pin (Must support edge-triggered ISR)
+
+### 🚀 Implementation Reference
+The hardware abstraction layer described in this document is programmatically initialized inside `layer2_dsp_pipeline.cpp`, while the matrix switching sequencing logic is handled dynamically by `hand_topology_mapper.py`.
 
