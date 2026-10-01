@@ -20,8 +20,17 @@
 +---------------------------------------------------------------------------------------+
 
 | 1.2 THE ISOLATED OBSERVER (Tetrapolar Isolation Boundary)                            |
-|     - Separates the current-driving pathways from the high-impedance sensing lines.   |
-|     - Banishes localized surface footprint distortion and parasitic contact friction. |
+|   > ### 🎛️ Analog Front-End Channel Configuration
+> 
+> The system utilizes four dedicated analog channels to execute the bio-impedance measurement loop: 
+> * **`CE0`** functions as the high-side current injector (**Force+**).
+> * **`RE0`** acts as the high-side differential voltage sensor (**Sense+**).
+> * **`SE0`** registers the low-side voltage measurement (**Sense-**).
+> * **`AIN1`** serves as the low-side current return sink (**Force-**).
+> 
+> By configuring these channels into symmetrical nodes on the breadboard interface, the hardware enforces true tetrapolar isolation.
+
+|    
 +---------------------------------------------------------------------------------------+
                                            │
                                            ▼ Pure Cellular Conversation
