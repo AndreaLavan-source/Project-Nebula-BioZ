@@ -65,7 +65,7 @@
 > To ensure low-latency, deterministic control over the **EVAL-AD5940BIOZ** analog front-end, the host microcontroller must communicate via a dedicated **Serial Peripheral Interface (SPI)** bus configured to match the AD5940's hardware constraints:
 > 
 > * **SPI Mode:** **Mode 0** or **Mode 3** (The AD5940 supports both CPOL=0/CPHA=0 and CPOL=1/CPHA=1 protocols).
-> * **Clock Speed (SCLK):** Max **16 MHz** (A standard operational rate of **8 MHz to 10 MHz** is recommended for stable bench-testing with jumper wires to minimize signal reflections).
+> * **Clock Speed (SCLK):** Max **12.5 MHz** (A standard operational rate of **8 MHz to 10 MHz** is recommended for stable bench-testing with jumper wires to minimize signal reflections).
 > * **Data Order:** **MSB First** (Most Significant Bit sent first).
 > * **Chip Select (CS):** Active-Low. Must be asserted before transmitting commands and de-asserted to flush data frames.
 > * **Interrupt Pin (IRQ):** Connected to an external hardware interrupt line on the host controller to handle high-speed **Data Ready** flags asynchronously from the AD5940 FIFO buffer.
