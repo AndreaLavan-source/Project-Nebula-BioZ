@@ -80,7 +80,7 @@ When **Project Nebula** processes the multi-channel AC data sweeps, it renders a
 
 ## 🏗️ System Architecture Outline
 
-### 🏢 LAYER 1: THE PHYSCIAL RESISTANCE & EXCITATION INTERFACE (Somatic & Hardware Layer)
+### 🏢 LAYER 1: THE PHYSICIAL RESISTANCE & EXCITATION INTERFACE (Somatic & Hardware Layer)
 Layer 1 handles the raw, physical boundary where the instrumentation meets the human body. It is responsible for safe signal injection, isolated routing through the concentric node array, and high-precision analog signal conditioning. 
 
 ```text
