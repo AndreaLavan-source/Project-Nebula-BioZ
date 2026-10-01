@@ -41,7 +41,7 @@ To understand the architecture of **Project Nebula**, we must bridge the rigid d
 
 ### 2. The Cell Membrane & Capacitance
 * **The Academic View:** A lipid bilayer that acts as a dielectric insulator, separating charges and temporarily storing electrical energy (capacitance).
-* **The Philosophical Mirror:** *The biological sponge of the vital spark.* The cell membrane acts as a protective shield holding internal negative charges separate from external positive charges. It interacts with the vibrating AC wave by absorbing a microscopic slice of its energy, holding it close, and then releasing it back into the stream.
+* **The Philosophical Mirror:** *The biological sponge of the vital spark.* The cell membrane acts as a protective shield holding internal negative charges seperate from external positive charges. It interacts with the vibrating AC wave by absorbing a microscopic slice of its energy, holding it close, and then releasing it back into the stream.
 
 ### 3. Phase Angle (The Biological Delay)
 * **The Academic View:** The angular shift or time lag (measured in degrees) between the injected voltage wave and the resulting current wave, directly caused by capacitive reactance.
