@@ -88,12 +88,10 @@ The AD5940 integrated high-speed digital-to-analog converter (DAC) generates a h
 
 ## 2.4.2 Signal Conditioning and TIA Stage
 The attenuated AC voltage wave returned from the 128-node matrix is captured by the AFE’s internal high-speed Transimpedance Amplifier (TIA). The TIA converts the raw current response into a highly stable voltage vector while minimizing internal thermal noise and signal drifting.
-2.4.3 Hardware Discrete Fourier Transform (DFT) Engine
+## 2.4.3 Hardware Discrete Fourier Transform (DFT) Engine
 Rather than relying on resource-intensive external microcontrollers for complex mathematical calculations, the AD5940leverages an on-chip hardware DFT accelerator. The DFT engine continuously processes the digitized voltage wave to compute the Complex Impedance (Z). It separates the signal into its real and imaginary vector components: 
 Real Component (R): Quantifies pure material resistance (measured in Ohms, Ω), tracking surface moisture variations, sweat-duct alignment, and epidermal density. 
-Imaginary Component (
-XC
-𝑋𝐶): Quantifies capacitive reactance, tracking cellular membrane integrity, lipid bilayer charge separation, and concurrent phase-delay. 
+Imaginary Component (𝑋𝐶): Quantifies capacitive reactance, tracking cellular membrane integrity, lipid bilayer charge separation, and concurrent phase-delay. 
 The AFE outputs these values concurrently, allowing the system to deliver real-time Phase Angle Tracking resolution down to fractions of a single degree. This dual tracking capability forms the hardware basis for high-resolution biological mapping and unique biometric cryptographic identity generation. 
 # CHAPTER 3: SOFTWARE ARCHITECTURE AND DIGITAL SIGNAL PROCESSING
 ## 3.1 Software Infrastructure Overview
@@ -146,9 +144,26 @@ Once the raw phase angle is isolated, the firmware applies a digital corrective 
 Once the corrected phase angles and material resistance values are extracted for all 128 nodes, the software compiles the independent data channels into a complete biological map. The high-level software utilizes an adaptive spatial processing module to handle physiological variations in hand scale and structural asymmetry. The map categorizes the data into two primary physiological tracking zones: 
 The Autonomic Activation Layer (Resistance Tracking): Processes paths of low resistance and high conductance. This module tracks real-time sympathetic nervous system activity and active sweat-duct alignment, capturing the fluidic, volatile changes in user state.
 The Cellular Structure Layer (Capacitance Tracking): Processes paths of high capacitive phase-delay. This module maps the stable, protective geometric architecture of intact cellular lipid bilayers, isolating deep anatomical traits that are highly resilient against external simulation or environmental noise. 
-# CHAPTER 4: RESULTS, SUDOMOTOR ACTIVATION, AND BENCHTOP VALIDATION
-## 4.1 Experimental Methodology and Setup
-The performance of the developed AC bio-impedance measurement system was evaluated via a Single-Subject Technical Pilot Evaluation. The primary objective was to validate the instrument's structural stability, electrical isolation, and active tracking capabilities under the influence of live, real-time biological noise and transient signal drifting. A healthy volunteer served as a dynamic biological test load. To ensure absolute human safety, all testing profiles were run with the active hardware current-limiting protection circuit strictly clamped to ≤ 10 μA. 
+
+# CHAPTER 4: RESULTS AND BENCHTOP VALIDATION
+
+## 4.1 Experimental Methodology and Setup 
+
+The performance of the developed AC bio-impedance measurement system was evaluated via a **Single-Subject Technical Pilot Evaluation**. The primary objective was to validate the instrument's structural stability, electrical isolation, and active tracking capabilities under the influence of live, real-time biological noise and transient signal drifting. 
+
+To achieve a standardized, repeatable dataset, the physical testing procedure followed a strict physical calibration routine:
+
+### 1. Environmental & Somatic Isolation (The Clean State)
+* **Action:** Wash hands thoroughly with mild soap and water, then dry completely. Wait exactly 5 minutes for the skin's surface to normalize to ambient room temperature.
+* **Purpose:** This clears out lingering surface containment or excessive natural oils, establishing a true, unpolluted biological baseline.
+
+### 2. Executing the Dry Baseline Sweep (Baseline_Dry)
+* **Action:** Place palm flat onto the 128-node matrix with firm, uniform pressure. Initiate the automation script to collect data for 60 seconds.
+* **Expected Output:** Resistance values remain stable and elevated (range: 340 Ω to 400 Ω), anchoring the baseline envelope.
+
+### 3. Inducing Somatic Arousal/Moisture (Induced_Moisture)
+* **Action:** Remove hand from the matrix. Rub hands together vigorously for 30 seconds (thermal friction) to stimulate local circulation and active sudomotor sweat-duct alignment.
+* **Action:** Replace palm back on the grid to record the dynamic somatic activation profile.
 +------------------+--------+------------------+---------------------+
 
 | Test Profile     | Freq.  | Resistance (R)   | Phase Angle (\theta)|
