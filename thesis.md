@@ -80,8 +80,8 @@ Passive Isolation: In-line isolation barriers prevent DC bias propagation and is
 Active Hardware Current Clamping: The excitation loop features a dedicated, independent hardware current-limiting protection circuit. This circuit physically clamps the total injection amplitude to a maximum threshold of ≤ 10 μA across all multi-frequency testing profiles. 
 By hard-clamping the current loop at the component level, the system ensures absolute safety. The probing AC wave functions as a purely observational tool, interrogating the cellular matrix without modifying the somatic equilibrium or inducing cellular over-excitation. 
 
-## 2.4 Analog Front End (AFE) and Core Instrumentation Archetype
-The core instrumentation framework leverages the high-precision, research-grade Analog Devices EVAL-AD5940BIOZhardware architecture. The AFE is natively optimized for high-frequency complex impedance spectroscopy and manages the complete signal generation and processing pipeline: 
+### 2.4 Analog Front End (AFE) and Core Microcontroller Archetype
+The core instrumentation framework leverages the high-precision, research-grade Analog Devices EVAL-AD5940BIOZ hardware architecture, which operates stacked directly on top of the integrated EVAL-ADICUP3029 microcontroller motherboard. This unified hardware stack manages the complete high-frequency complex impedance spectroscopy loop, power regulation, and data transmission over a single micro-USB connection. 
 
 ## 2.4.1 Waveform Generation
 The AD5940 integrated high-speed digital-to-analog converter (DAC) generates a highly stable, low-distortion ¼-cycle or full-cycle sinusoidal excitation wave. The system is parameterized to operate across distinct multi-frequency profiles ranging from 50,000 Hz (50 kHz) to 100,000 Hz (100 kHz) with programmable amplitudes between 300 mV and 600 mV. High-frequency operation is required to force cellular membrane penetration, allowing the signal to bypass capacitive epidermal barriers and gather accurate deep-tissue sub-surface data. 
