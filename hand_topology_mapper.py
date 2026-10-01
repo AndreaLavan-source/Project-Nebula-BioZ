@@ -36,7 +36,7 @@ return normalized_grid
             if i >= self.target_nodes:
                 break
             # Translate normalized coordinates directly into a target hardware channel address
-            channel_assignment = int(np.mean(coordinate) * 128), 127) 
+            channel_assignment = min(int(np.mean(coordinate) * 128), 127) 
             hardware_routing_table.append({
                 "node_index": i,
                 "spatial_vector": coordinate.tolist(),
