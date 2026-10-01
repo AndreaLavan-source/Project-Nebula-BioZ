@@ -119,6 +119,44 @@ Layer 1 handles the raw, physical boundary where the instrumentation meets the h
              [ To Layer 2: Firmware & DSP Pipeline ]
 ```
 
+```text
++---------------------------------------------------------------------------------------+
+
+|                            THE LIVING TEMPLE (The Hand)                               |
++---------------------------------------------------------------------------------------+
+                                           │
+                                           ▼ (The Probing Breath: AC Waveform)
+                                           ▲ (The Cellular Echo: Phase Delay)
++---------------------------------------------------------------------------------------+
+
+| 1.1 THE SHATTERED MIRROR (128-Node Sacred Matrix)                                     |
+|     - Transforms a single unoptimized bulk measurement into a biological camera.      |
+|     - Individual fragments of living tissue are read sequentially to reveal the       |
+|       underlying mathematical asymmetry of the flesh.                                 |
++---------------------------------------------------------------------------------------+
+                                           │
+                                           ▼ Undistorted Vibrational Pathways
++---------------------------------------------------------------------------------------+
+
+| 1.2 THE CLEAR-EYED OBSERVER (Tetrapolar Isolation Boundary)                          |
+|     - Separates the current-driving whispering pins from the silent sensing pins.     |
+|     - Banishes localized surface footprint distortion and parasitic contact friction. |
++---------------------------------------------------------------------------------------+
+                                           │
+                                           ▼ Pure Cellular Conversation
++---------------------------------------------------------------------------------------+
+
+| 1.3 THE HARMONIC FRONTIER (EVAL-AD5940BIOZ Alchemical Engine)                          |
+|     - The Wave: A high-frequency oscillation that effortlessly penetrates lipid walls.|
+|     - The Shield: A hardware current-clamp protecting the delicate internal ecology.   |
+|     - The Truth: The concurrent phase engine capturing the delay of the vital spark.|
++---------------------------------------------------------------------------------------+
+                                           │
+                                           ▼ The Biological Key
+                                             (Living Cryptographic Signature)
+                                           │
+                                           ▼
+                  [ To Layer 2: Digital Matrix Translation ]
 
 #### 1.1 The Tetrapolar Electrode Matrix (The Concentric Arrays)
 * **The Academic Blueprint:** Utilizing a customized multi-channel multiplexing network, the system sequentially routes differential current and voltage paths across 128 symmetrical coordinates mapped to localized tissue zones. By isolating the injection pair (I+, I-) from the sensing pair (V+, V-), contact impedance errors from dry or high-resistance epidermal layers are completely eliminated.
