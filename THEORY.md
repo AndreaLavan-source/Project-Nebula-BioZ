@@ -72,7 +72,6 @@
 > * **Interrupt Pin (IRQ):** Connected to an external hardware interrupt line on the host controller to handle high-speed **Data Ready** flags asynchronously from the AD5940 FIFO buffer.
 
 
-* Interrupt Pin (IRQ): Connected to an external hardware interrupt line on the host controller to handle high-speed Data Ready flags asynchronously from the AD5940 FIFO buffer.
 
 ### 📌 Host Microcontroller to AD5940 Pin Map
 To ensure reliable communication and stable edge-triggered interrupts, wire the host controller to the EVAL-AD5940BIOZ platform using the following layout:
