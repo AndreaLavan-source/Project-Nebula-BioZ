@@ -100,15 +100,15 @@ Project Nebula normalizes these traditional observations by evaluating the under
  
 When the 128-Node AC Matrix sweeps over a trident, the physical structure acts as a **biological multi-vector current splitter**:
 1. **The Core Channel (The Valley):** Acts as a low-resistance current highway (Autonomic Layer / Red Zone), mapping localized sudomotor sweat-duct alignment.
-2. **The Terminal Prongs (The Ridges):** Force the high-frequency AC wave to branch into three distinct spatial vectors simultaneously. This massive concentration of tightly packed cell membranes acts as a highly localized capacitive reservoir (Cellular Structure Layer / Blue Zone).[Primary Conductance Path]
-|
-v
-{TRIDENT KNOB}
-/   |   
-/    |    
-v     v     v
-VectorA VectorB VectorC
-
+2. **The Terminal Prongs (The Ridges):** Force the high-frequency AC wave to branch into three distinct spatial vectors simultaneously. This massive concentration of tightly packed cell membranes acts as a highly localized capacitive reservoir (Cellular Structure Layer / Blue Zone).
+[Primary Conductance Path]
+                           |
+                           v
+                     {TRIDENT KNOB}
+                       /   |   \
+                      /    |    \
+                     v     v     v
+                  VectorA VectorB VectorC
 #### 1. The Trident Configuration (The Power of Convergence)
 
 *   **Structural Context:** In traditional dermatoglyphic notation, a trifurcated ridge structure or triradius represents a high-density convergence zone where three distinct epidermal fields meet at a singular macro-anatomical junction.
