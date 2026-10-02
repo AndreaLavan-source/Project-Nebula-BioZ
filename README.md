@@ -1,4 +1,5 @@
 # Project-Nebula-BioZ
+> ⚠️ **Status:** Open Source (AGPL-3.0) | **Intellectual Property:** U.S. Patent Pending
 ### A Custom Isolated Architecture for Living Cryptographic Biometric Identification
 **Author:** Andrea Lavan 
 **Status:** Hardware Validation Phase (Complete) | Software Matrix Development (Seeking Co-Developer)
@@ -175,6 +176,9 @@ The AGPL-3.0 is a copyleft license designed specifically to ensure absolute arch
 * **Network Interactivity Requirement:** If you host a modified version of this system on a server to process tomography data remotely, you must make the complete source code available to the users interacting with that service.
 
 *   **Preserve Integrity:** All downstream instances must preserve original author credits, copyright indicators, and hardware mapping protocols intact.
+
+## ⚖️ Intellectual Property Notice
+This project incorporates proprietary technology and methods currently protected under a **U.S. Provisional Patent Application (Patent Pending)**. All rights reserved. Unauthorized reproduction, commercial distribution, or reverse engineering of the custom hardware architecture or signal processing methods is strictly prohibited.
 
 
 
