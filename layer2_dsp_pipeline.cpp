@@ -88,21 +88,35 @@ int main() {
     double test_real = -1.0; 
     double test_img = -1.0; 
     
-    ComplexImpedance test_output = dsp_engine.apply_quadrant_inversion_filter(test_real, test_img); 
-    
-    // Expectation: Flipped -135.0° is < -90.0°, so it must shift by +180.0° to equal +45.0° 
-    double expected_phase = 45.0; 
-    double tolerance = 0.01; 
-    
-    std::cout << " -> Expected Phase: " << expected_phase << "°\n"; 
-    std::cout << " -> Actual Phase:   " << test_output.phase_angle << "°\n"; 
-    
-    if (std::abs(test_output.phase_angle - expected_phase) < tolerance) { 
-        std::cout << " [RESULT] STATUS: PASSED (Quadrant inversion logic is 100% verified)\n"; 
-    } else { 
-        std::cout << " [RESULT] STATUS: FAILED (Check math library scaling factors)\n"; 
-    } 
-    std::cout << "=================================================================\n"; 
-    
-    return AD5940_SUCCESS; 
-}
+    ComplexImpedance apply_quadrant_inversion_filter(double raw_real, double raw_imag) {
+        ComplexImpedance corrected_metrics;
+        
+        // --- PHASE 2 CALIBRATION LAYER ---
+        // Define hardware-level conversion constants
+        const double RCAL_VALUE = 10000.0;    // Onboard internal 10k reference resistor
+        const double SYSTEM_GAIN = 5800.0;    // AD5940 system amplification gain factor
+        
+        // 1. Calculate the raw magnitude code from the real/imag vectors
+        double raw_magnitude = std::sqrt((raw_real * raw_real) + (raw_imag * raw_imag));
+        
+        // 2. Compute the actual overall impedance magnitude in Ohms (Z)
+        double impedance_magnitude_ohms = (RCAL_VALUE / raw_magnitude) * SYSTEM_GAIN;
+        
+        // 3. Compute raw phase angle in radians, then convert to degrees
+        double raw_phase_deg = std::atan2(raw_imag, raw_real) * (180.0 / PI);
+        
+        // Step 2: Digital Corrective Prism Filter (Your original phase realignment)
+        if (raw_phase_deg < -90.0) {
+            corrected_metrics.phase_angle = raw_phase_deg + 180.0;
+        } else {
+            corrected_metrics.phase_angle = raw_phase_deg;
+        }
+        
+        // 4. Deconstruct the calibrated magnitude back into real physical Resistance (R) and Reactance (X)
+        double phase_rad = corrected_metrics.phase_angle * (PI / 180.0);
+        corrected_metrics.real_ohms = impedance_magnitude_ohms * std::cos(phase_rad);
+        corrected_metrics.imaginary_ohms = impedance_magnitude_ohms * std::sin(phase_rad);
+        
+        return corrected_metrics;
+    }  
+impp
