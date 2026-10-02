@@ -104,13 +104,14 @@ v     v     v
 VectorA VectorB VectorC
 
 #### 1. The Trident Configuration (The Power of Convergence)
-*   **What Philosophy/Tradition Says:** The trident represents an auspicious triple-junction—an alignment where three distinct paths or energies (mind, body, and spirit) unify into one powerful, stable point.
-*   **What the Data Shows:** When looking at the Project Nebula Matrix Sweeps, a trident is an anatomical junction where three physical pathways collide. It forces the electrical wave to split across multiple vectors. Our ancestors recognized this as a point of high stability and power; the hardware validates this by reading it as a high-entropy node that anchors your cryptographic key.
 
-By documenting this archetype, Project Nebula demonstrates that ancient intuitive mapping systems were observing the exact same structural asymmetries that we now utilize to generate uncopyable cryptographic hardware keys. The "meaning" of the trident is a literal bottleneck of high geometric entropy.
+*   **Structural Context:** In traditional dermatoglyphic notation, a trifurcated ridge structure or triradius represents a high-density convergence zone where three distinct epidermal fields meet at a singular macro-anatomical junction.
+*   **Topological Impedance Data:** When the 128-Node AC Matrix sweeps across this multi-directional intersection, the electrical signal splits along three parallel vectors. This high-density cluster of cell walls introduces a concentrated capacitive bottleneck. The system maps this localized structural shift as a distinct high-entropy node, providing a highly stable geometric anchor point within your hardware key generation array.
+    By documenting this archetype, Project Nebula demonstrates that ancient intuitive mapping systems were observing the exact same structural asymmetries that we now utilize to generate uncopyable cryptographic hardware keys. The "meaning" of the trident is a literal bottleneck of high geometric entropy.
+
 #### 2. Star Clusters and Independent "X" Marks (The Junctions of Focus)
-*   **What Philosophy/Tradition Says:** An "X" or a dense star cluster represents a critical intersection or a "knot" of destiny on the palm—a specific point where different life paths violently cross and spark intense localized energy.
-*   **What the Data Shows:** Physically, these crossings are points where multi-directional skin ridges compress tightly together. In a 10 kHz AC sweep, these compressed cellular boundaries act as localized capacitive bottlenecks. They momentarily absorb and hold the electrical wave, forcing a sharp phase-delay spike. Both philosophy and data view these nodes as concentrated points of focus.
+*   **Structural Context:** An independent intersecting focal point or dense structural ridge cluster represents a localized, high-compression junction where opposing multi-directional skin vectors collide.
+*   **Topological Impedance Data:** These geometric cross-over sites compress the surrounding cellular layers tightly together. During a multi-frequency AC sweep, these compressed boundaries create sharp capacitive phase-delay spikes rather than a uniform resistive dissipation field. The processing pipeline isolates these sharp spikes as highly localized, high-density focus nodes.
 
 #### 3. Enclosed Triangles (The Funnels of Amplification)
 *   **What Philosophy/Tradition Says:** The triangle is a sacred symbol of manifestation and focus, acting as a geometric lens that gathers scattered energy from the palm and funnels it toward a single, sharp apex.
