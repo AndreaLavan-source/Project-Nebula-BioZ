@@ -99,82 +99,60 @@ To capture both deep macro-structural paths and high-resolution micro-topographi
 
 ### Structural ASCII Data-Flow Matrix
 
-### Updated Multi-Frequency Impedance Sweep Simulation
+### Structural ASCII Data-Flow Matrix
 
-```python
-import numpy as np
+```text
+=========================================================================================
+                           DUAL-PALM SYNCHRONOUS AC SCAN INITIALIZATION
+=========================================================================================
+                                        |
+                                        v
+                 [ MULTI-FREQUENCY MULTI-BAND AC SWEEP: 10 kHz - 5 MHz ]
+                                        |
+                 +----------------------+----------------------+
 
-def simulate_palm_biometrics():
-    # 1. Frequency Band Matrix Setup (Hz)
-    frequencies = {
-        "Low (Dermal Baseline)": 10_000,
-        "Mid (Macro-M Network)": 100_000,
-        "High (Micro-Topography)": 1_000_000
-    }
-    
-    print("=== STEP 1: INITIALIZING DUAL-PALM SYNCHRONOUS SWEEP ===")
-    
-    # Simulating a structurally synchronized "Double M" configuration
-    left_hand_macro_m_aligned = True
-    right_hand_macro_m_aligned = True
-    
-    # 2. Global Network Validation via Anatomical Creases
-    print("\n=== STEP 2: EXECUTING MACRO-M DIFFERENTIAL VALIDATION ===")
-    if left_hand_macro_m_aligned and right_hand_macro_m_aligned:
-        print("[SUCCESS] Left and Right Macro-M networks match on spatial grid.")
-        print("[STATUS] Common mode systemic noise and individual hydration skew eliminated.")
-        coordinate_system_locked = True
-    else:
-        print("[ERROR] Architectural mismatch. Calibrate alignment.")
-        return
+                 |                                             |
+                 v                                             v
+    [ LEFT PALM IMPEDANCE PROFILE ]               [ RIGHT PALM IMPEDANCE PROFILE ]
+    (Baseline Internal Blueprint)                 (Active Dynamic Surface Plane)
 
-    # 3. Multi-Frequency Signal Processing Simulation
-    if coordinate_system_locked:
-        print("\n=== STEP 3: ANALYZING FREQUENCY-DEPENDENT TOPOLOGICAL NODES ===")
-        
-        for band, freq in frequencies.items():
-            print(f"\nScanning at {band} Band ({freq:,} Hz):")
-            
-            if "Low" in band:
-                # Deep dermal layers show lower overall impedance due to moisture profile
-                base_impedance = 50000
-                # Highly conductive structural traces: Thenar, Proximal Transverse, and Distal Transverse Creases
-                line_impedance = base_impedance * 0.4  
-                print(f" -> Mapping deep anatomical framework...")
-                print(f" -> Tissue Baseline: {base_impedance} Ohms | Found Foundational Creases: {line_impedance:.0f} Ohms")
-                
-            elif "Mid" in band:
-                # Mid frequencies map the overarching Macro-M bridge junctions
-                base_impedance = 25000
-                bridge_junction = base_impedance * 0.3
-                print(f" -> Tracking central network bridge nodes...")
-                print(f" -> Network Mesh Baseline: {base_impedance} Ohms | Bridge Intersect Node: {bridge_junction:.0f} Ohms")
-                
-            elif "High" in band:
-                # High frequencies evaluate shallow micro-structures
-                print(f" -> Target Isolated Sub-Regions Locked. Processing Micro-Topography:")
-                
-                # Feature A: Enclosed Triangle Funnel (Impedance Bottleneck)
-                triangle_base_impedance = 15000
-                triangle_apex_impedance = triangle_base_impedance * 4.5 
-                print(f"    [Node 3: Enclosed Triangle] Base Area: {triangle_base_impedance} Ohms -> Apex Bottleneck: {triangle_apex_impedance:.0f} Ohms")
-                
-                # Feature B: Sideways Diamond with Internal X (Capacitive Phase Delay)
-                normal_phase_shift = -12.5
-                shielded_core_phase_shift = -48.2 
-                print(f"    [Node 4: Sideways Diamond] Normal Ridge Shift: {normal_phase_shift}° -> Shielded Core Phase Delay: {shielded_core_phase_shift}°")
+                 |                                             |
+                 +----------------------+----------------------+
+                                        |
+                                        v
+                    [ ISOLATE MACRO-M LINEAR NETWORK GEOMETRY ]
+          (Extract Foundation Framework: Thenar, Transverse, & Bridge Lines)
+                                        |
+                                        v
+                [ CROSS-HAND MIRROR DIFFERENTIAL VALIDATION FILTER ]
+                                        |
+               +------------------------+------------------------+
 
-        # 4. Cryptographic Key Synthesis
-        print("\n=== STEP 4: CORE CRYPTOGRAPHIC SYNTHESIS ===")
-        print("[STATUS] Compiling full multi-band topological node maps...")
-        print("[SUCCESS] Generate Core Cryptographic Biometric Key out of multi-layered tissue asymmetry.")
-        print("=========================================================================================")
-        print("                                  SECURE HANDSHAKE VERIFIED                              ")
-        print("=========================================================================================")
+               |                                                 |
+      [Mismatched Grid]                                   [Validated Match]
 
-if __name__ == "__main__":
-    simulate_palm_biometrics()
+               |                                                 |
+               v                                                 v
+  [ SYSTEM ERROR / CALIBRATE ]                      [ NORMALIZE COORDINATE MATRIX ]
+  (Signal Noise / Misalignment)                     (Lock Anchor Coordinates X,Y,Z)
+                                                                 |
+                                                                 v
+                                                    [ SUB-REGIONAL MICRO-ISOLATION ]
+                                                                 |
+                                       +-------------------------+-------------------------+
+
+                                       |                                                   |
+                                       v                                                   v
+                         [ MICRO-TOPOGRAPHY PATHWAY A ]                      [ MICRO-TOPOGRAPHY PATHWAY B ]
+                         (Enclosed Triangular Funnels)                       (Sideways Diamonds with Internal 'X')
+
+                                       |                                                   |
+                                       v                                                   v
+                         [ MEASURE IMPEDANCE BOTTLENECK ]                    [ MEASURE CAPACITIVE PHASE DELAY ]
+                         (Geometric Micro-Constriction)                      (Perimeter Shield Core Isolation)
 ```
+
+
 
 ## 🎨 System Mapping: High-Resolution Biological Mapping
 
