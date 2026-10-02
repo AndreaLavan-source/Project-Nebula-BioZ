@@ -7,11 +7,12 @@ typedef bool BoolFlag;
 #define bTRUE true
 #define bFALSE false
 
-// Mock definitions representing the native AD5940 switch matrix channels
-#define SWD_CE0      (1 << 0)
-#define SWP_RE0      (1 << 1)
-#define SWN_AIN2     (1 << 2)
-#define SWT_TRTIA    (1 << 3)
+// Native AD5940 switch matrix register bits mapping perfectly to your physical pins
+#define SWD_CE0      (1 << 0)   // Force Current (+) Pin
+#define SWN_AIN0     (1 << 1)   // Force Current (-) Pin
+#define SWN_AIN2     (1 << 2)   // Sense Voltage (-) Pin
+#define SWP_AIN3     (1 << 3)   // Sense Voltage (+) Pin
+#define SWT_TRTIA    (1 << 4)   // Internal Transimpedance Amplifier Feedback Link
 
 struct Clks_Type { uint32_t WaitClks; };
 struct swMatrixCfg_Type {
@@ -56,11 +57,11 @@ public:
             set_external_hardware_mux_address(node_id);
             
             // Step 2: Configure the internal AD5940 high-speed switch matrix for Tetrapolar (4-Pin) sensing
-            // Keeps current-injecting paths isolated from voltage-sensing paths to drop contact impedance
-            sw_cfg.Dswitch = SWD_CE0;   // Current Excitation Drive Channel
-            sw_cfg.Pswitch = SWP_RE0;   // Current Return Path Channel
-            sw_cfg.Nswitch = SWN_AIN2;  // Isolated Voltage Sensing Positive Node
-            sw_cfg.Tswitch = SWN_AIN2 | SWT_TRTIA; // Isolated Voltage Negative Feedback Link
+            // Hardwired directly to follow your physical vertical line header positions:
+            sw_cfg.Dswitch = SWD_CE0;             // Force Current (+)  -> Physical Wire: CE0
+            sw_cfg.Pswitch = SWN_AIN0;            // Force Current (-)  -> Physical Wire: AIN0
+            sw_cfg.Nswitch = SWP_AIN3;            // Sense Voltage (+)  -> Physical Wire: AIN3
+            sw_cfg.Tswitch = SWN_AIN2 | SWT_TRTIA;// Sense Voltage (-)  -> Physical Wire: AIN2 (plus TIA loop)
             
             // Step 3: Push the geometric configuration over SPI to the Analog Front End register map
             AD5940_SWMatrixCfgS(&sw_cfg);
