@@ -97,7 +97,6 @@ To capture both deep macro-structural paths and high-resolution micro-topographi
 *   **Mid-Frequency Band (20 kHz - 80 kHz) — Network Intersection & Bridge Tracking:** Specially balanced to capture the central bridging traces and multi-nodal junctions where horizontal and vertical lines lock together.
 *   **High-Frequency Band (80 MHz - 200 MHz) — Micro-Topographical Surface Scanning:** Deployed during targeted micro-sweeps to map sharp localized impedance bottlenecks (Triangles) and capacitive phase delays (Diamonds) within superficial epidermal ridges.
 
-### Structural ASCII Data-Flow Matrix
 
 ### Structural ASCII Data-Flow Matrix
 
