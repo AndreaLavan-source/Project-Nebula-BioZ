@@ -77,7 +77,7 @@ To understand the architecture of **Project Nebula**, we must bridge the rigid d
 
 ### 10. Macro-M Linear Networks (The Primary Tri-Line Architectural Blueprint)
 
-*   **The Academic View:** The dominant macro-configuration on the human hand manifests as a continuous, multi-nodal line network tracking a geometric "M" topology. This framework is formed by the spatial intersection of three primary high-conductivity epidermal traces—the Life, Head, and Heart lines—interlinked by a vertical central bridging trace. This structural matrix serves as the global baseline coordinate system, routing horizontal and vertical signals across the entire surface to calibrate the 128-node matrix before micro-topographical mapping begins.
+*   *   **The Academic View:** The dominant macro-configuration on the human hand manifests as a continuous, multi-nodal line network tracking a geometric "M" topology. This framework is formed by the spatial intersection of three primary high-conductivity epidermal traces—the thenar crease, proximal transverse crease, and distal transverse crease—interlinked by a vertical central bridging trace. This structural matrix serves as the global baseline coordinate system.
 *   **The Philosophical Mirror:** *The universal chassis of human instrumentation.* While micro-anomalies provide unique cryptographic depth, the Macro-M network represents the shared baseline architecture of human tissue. It is the primary map grid that allows the instrumentation to immediately recognize, orient, and ground itself upon the biological surface.
 
 ### 11. Synchronized Dual-Palm Configurations (The Mirror-Symmetric Double M Network)
@@ -93,9 +93,9 @@ To understand the architecture of **Project Nebula**, we must bridge the rigid d
 
 To capture both deep macro-structural paths and high-resolution micro-topographical surface features without signal bleeding, the front-end architecture utilizes a multi-band, frequency-agile AC sweep matrix:
 
-*   **Low-Frequency Band (10 kHz - 50 kHz) — Deep Dermal Sub-Layer Probing:** Optimized for high depth penetration to bypass superficial skin dryness or calluses, establishing the deep anatomical baseline roots of the Macro-M network.
-*   **Mid-Frequency Band (100 kHz - 500 kHz) — Network Intersection & Bridge Tracking:** Specially balanced to capture the central bridging traces and multi-nodal junctions where horizontal and vertical lines lock together.
-*   **High-Frequency Band (1 MHz - 5 MHz) — Micro-Topographical Surface Scanning:** Deployed during targeted micro-sweeps to map sharp localized impedance bottlenecks (Triangles) and capacitive phase delays (Diamonds) within superficial epidermal ridges.
+*   **Low-Frequency Band (5 kHz - 20 kHz) — Deep Dermal Sub-Layer Probing:** Optimized for high depth penetration to bypass superficial skin dryness or calluses, establishing the deep anatomical baseline roots of the Macro-M network.
+*   **Mid-Frequency Band (20 kHz - 80 kHz) — Network Intersection & Bridge Tracking:** Specially balanced to capture the central bridging traces and multi-nodal junctions where horizontal and vertical lines lock together.
+*   **High-Frequency Band (80 MHz - 200 MHz) — Micro-Topographical Surface Scanning:** Deployed during targeted micro-sweeps to map sharp localized impedance bottlenecks (Triangles) and capacitive phase delays (Diamonds) within superficial epidermal ridges.
 
 ### Structural ASCII Data-Flow Matrix
 
