@@ -129,9 +129,9 @@ When the 128-Node AC Matrix sweeps over a trident, the physical structure acts a
 *   **Structural Context:** A diamond-shaped epidermal formation acts as a perimeter isolation shield, cross-secting internal ridge patterns and mechanically shielding the interior core from surrounding directional skin shifts.
 *   **Topological Impedance Data:** The outer perimeter lines of this diamond pattern structurally isolate the inner tissue core, blocking lateral current leakage. When paired with an internal intersecting ridge pattern at its center, it forms a multi-stage reactive electrical filter. Deep-penetration validation sweeps confirm that this shielded configuration yields a highly consistent, repeatable capacitive phase delay, successfully insulating the core cryptographic signal from external noise or skin placement shifts.
  
-  ### 5. Macro-M Linear Networks (The Primary Tri-Line Architectural Blueprint)
+ ### 5. Macro-M Linear Networks (The Primary Tri-Line Architectural Blueprint)
 
-*   **Structural Context:** The dominant macro-configuration on the human hand manifests as a continuous, multi-nodal line network resembling an "M" shape. This layout functions as the primary structural frame of the hand. It is formed by the geometric intersection of three foundational epidermal traces—the Life, Head, and Heart lines—interlinked by a vertical central bridge line.
+*   **Structural Context:** The dominant macro-configuration on the human hand manifests as a continuous, multi-nodal line network resembling an "M" shape. This layout functions as the primary structural frame of the hand. It is formed by the geometric intersection of three foundational epidermal traces—the thenar crease, proximal transverse crease, and distal transverse crease—interlinked by a vertical central bridge line.
 *   **Topological Impedance Data:** This interconnected matrix acts as a universal reference grid across the palm's surface. The primary traces represent deeply grooved, high-conductivity channels that handle the main current pathways during whole-hand surface scans. By mapping how the central bridge line routes signals horizontally across the middle palm to link the distinct upper and lower fields, this network establishes a stable baseline for global biometric alignment. It effectively calibrates the coordinate system before the system scans for smaller, hyper-localized anomalies.
 
 ### 6. Synchronized Dual-Palm Configurations (The Mirror-Symmetric Double M Network)
@@ -139,24 +139,24 @@ When the 128-Node AC Matrix sweeps over a trident, the physical structure acts a
 *   **Structural Context:** A rare architectural variation where identical Macro-M Linear Networks are perfectly mirrored and synchronized across both the left and right epidermal planes.
 *   **Topological Impedance Data:** When scanned simultaneously, this dual-palm symmetry allows for real-time differential signal validation. The non-dominant hand provides a stable baseline blueprint, while the dominant hand maps active structural shifts. Because the multi-nodal networks match on both planes, the system can run a clean cross-hand impedance comparison. This eliminates systemic noise, filters out individual skin hydration variables, and verifies that the core biometric signal remains perfectly aligned from the foundational blueprint to the external physical surface.
 
-   ### 7. Sensor-Frequency Specifications
+### 7. Sensor-Frequency Specifications
 
 To capture both the deep structural channels of the Macro-M Linear Networks and the high-resolution features of localized micro-topography, the biometric hardware utilizes a multi-band, frequency-agile alternating current (AC) sweep.
 
 ```text
 [ 10 kHz  —————— Low Frequency: Deep Dermal Mapping ]
-[ 100 kHz —————— Mid Frequency: Macro-M Network Alignment ]
-[ 1 MHz   —————— High Frequency: Epidermal Micro-Topography ]
+[ 50 kHz  —————— Mid Frequency: Macro-M Network Alignment ]
+[ 200 kHz —————— High Frequency: Epidermal Micro-Topography ]
 ```
 
-*   **Low-Frequency Band (10 kHz - 50 kHz) — Deep Dermal Sub-Layer Probing:**
-    *   **Application:** Used primarily to map the deep structural roots of the foundational Life, Head, and Heart lines.
+*   **Low-Frequency Band (5 kHz - 200 kHz) — Deep Dermal Sub-Layer Probing:**
+    *   **Application:** Used primarily to map the deep structural roots of the foundational thenar and transverse palmar creases.
     *   **Penetration:** High depth penetration, bypassing superficial skin dryness or calluses.
     *   **Target:** Establishes the deep anatomical baseline for the global coordinate grid.
-*   **Mid-Frequency Band (100 kHz - 500 kHz) — Network Intersection & Bridge Tracking:**
+*   **Mid-Frequency Band (20 kHz - 80 kHz) — Network Intersection & Bridge Tracking:**
     *   **Application:** Optimally balanced for tracking the central bridging traces that lock the "M" formation into place.
     *   **Target:** Maximizes signal-to-noise ratio at the critical junctions where horizontal and vertical lines intersect.
-*   **High-Frequency Band (1 MHz - 5 MHz) — Micro-Topographical Surface Scanning:**
+*   **High-Frequency Band (80 kHz - 200 kHz) — Micro-Topographical Surface Scanning:**
     *   **Application:** Deployed during targeted micro-sweeps over localized anomalies (e.g., Enclosed Triangles, Sideways Diamonds).
     *   **Target:** High surface-level resolution to detect sharp localized impedance bottlenecks and phase delays within superficial epidermal ridges.
 
@@ -164,37 +164,7 @@ To capture both the deep structural channels of the Macro-M Linear Networks and 
 
 The following sequence outlines how the system processes dual-palm inputs, normalizes the global coordinate architecture via the Macro-M network, and isolates specific localized signals.
 
-```mermaid
-graph TD
-    A[Start: Dual-Palm Synchronous AC Scan] --> B[Multi-Frequency AC Sweep: 10 kHz - 5 MHz]
-    B --> C[Extract Impedance Profiles: Left & Right Palms]
-    
-    %% Global Alignment Phase
-    C --> D[Identify Macro-M Linear Networks]
-    D --> E[Execute Cross-Hand Mirror Differential Validation]
-    E -->|Mismatched Grid| F[Error: Calibrate Sensor Placement / Alignment Noise]
-    E -->|Validated Match| G[Normalize Global Biometric Coordinate System]
-    
-    %% Localized Feature Extraction Phase
-    G --> H[Isolate Sub-Regional Coordinates]
-    H --> I[Analyze Enclosed Triangles]
-    H --> J[Analyze Sideways Diamonds with Internal X]
-    
-    %% Processing Localized Sub-Regions
-    I --> K[Measure Geo-Constriction & Impedance Bottlenecks]
-    J --> L[Measure Capacitive Phase Delay & Perimeter Shield Isolation]
-    
-    %% Cryptographic Synthesis
-    K --> M[Synthesize Micro-Topographical Node Map]
-    L --> M
-    M --> N[Generate Core Cryptographic Biometric Key]
-    N --> O[End: Secure Handshake Verified]
-
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style G fill:#bbf,stroke:#333,stroke-width:2px
-    style N fill:#bfb,stroke:#333,stroke-width:2px
-```
- ### 9. Structural ASCII Data-Flow Matrix
+### 9. Structural ASCII Data-Flow Matrix
 
 ```text
 =========================================================================================
@@ -202,7 +172,7 @@ graph TD
 =========================================================================================
                                         |
                                         v
-                 [ MULTI-FREQUENCY MULTI-BAND AC SWEEP: 10 kHz - 5 MHz ]
+                 [ MULTI-FREQUENCY MULTI-BAND AC SWEEP: 5 kHz - 200 kHz ]
                                         |
                  +----------------------+----------------------+
 
@@ -216,50 +186,12 @@ graph TD
                                         |
                                         v
                     [ ISOLATE MACRO-M LINEAR NETWORK GEOMETRY ]
-          (Extract Foundation Framework: Life, Head, Heart, & Bridge Lines)
+          (Extract Foundation Framework: Thenar, Transverse, & Bridge Lines)
                                         |
                                         v
                 [ CROSS-HAND MIRROR DIFFERENTIAL VALIDATION FILTER ]
                                         |
                +------------------------+------------------------+
-
-               |                                                 |
-      [Mismatched Grid]                                   [Validated Match]
-
-               |                                                 |
-               v                                                 v
-  [ SYSTEM ERROR / CALIBRATE ]                      [ NORMALIZE COORDINATE MATRIX ]
-  (Signal Noise / Misalignment)                     (Lock Anchor Coordinates X,Y,Z)
-                                                                 |
-                                                                 v
-                                                    [ SUB-REGIONAL MICRO-ISOLATION ]
-                                                                 |
-                                       +-------------------------+-------------------------+
-
-                                       |                                                   |
-                                       v                                                   v
-                         [ MICRO-TOPOGRAPHY PATHWAY A ]                      [ MICRO-TOPOGRAPHY PATHWAY B ]
-                         (Enclosed Triangular Funnels)                       (Sideways Diamonds with Internal 'X')
-
-                                       |                                                   |
-                                       v                                                   v
-                         [ MEASURE IMPEDANCE BOTTLENECK ]                    [ MEASURE CAPACITIVE PHASE DELAY ]
-                         (Geometric Micro-Constriction)                      (Perimeter Shield Core Isolation)
-
-                                       |                                                   |
-                                       +-------------------------+-------------------------+
-                                                                 |
-                                                                 v
-                                                    [ MACRO/MICRO DATA-NODE SYNTHESIS ]
-                                                    (Compile Full Topological Node Map)
-                                                                 |
-                                                                 v
-                                                 [ GENERATE CRYPTOGRAPHIC BIOMETRIC KEY ]
-                                                                 |
-                                                                 v
-=========================================================================================
-                                  SECURE HANDSHAKE VERIFIED
-=========================================================================================
 ```
 
 ### 10. Multi-Frequency Impedance Sweep Simulation
