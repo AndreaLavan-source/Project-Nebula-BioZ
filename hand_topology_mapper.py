@@ -1,59 +1,70 @@
+import serial
+import time
 import numpy as np
-import math
 
-class AdaptiveGridMapper:
-    def __init__(self, target_nodes=128):
-        self.target_nodes = target_nodes
-        print(f"[INFO] Initializing Adaptive Bio-Impedance Grid Mapper for {self.target_nodes} nodes.")
-
-    def normalize_hand_topology(self, raw_camera_landmarks):
+class HandTopologyMapper:
+    def __init__(self, port='COM3', baudrate=9600):
         """
-        Accepts raw 2D/3D camera coordinate arrays and normalizes them 
-        against biological scale variances using a bounding box vector.
+        Initializes the 128-Node Bioimpedance Matrix Parser.
+        Adjust 'port' to match your microcontroller's USB connection (e.g., 'COM3' or '/dev/ttyACM0').
         """
-        landmarks = np.array(raw_camera_landmarks)
+        self.total_nodes = 128
+        self.matrix_data = np.zeros((self.total_nodes, 2))  # Column 0: Magnitude (Ω), Column 1: Phase (°)
         
-        # Calculate extreme anatomical boundaries (bounding box)
-        min_coords = np.min(landmarks, axis=0)
-        max_coords = np.max(landmarks, axis=0)
-        hand_scale = max_coords - min_coords
-        
-   # Prevent division by zero errors by replacing 0 scales with 1.0
-hand_scale = np.where(hand_scale == 0, 1.0, hand_scale)
+        print(f"Connecting to Project-Nebula-BioZ Hardware on {port}...")
+        try:
+            self.serial_connection = serial.Serial(port, baudrate, timeout=1)
+            time.sleep(2)  # Allow hardware time to reset after plug-in
+            print("Hardware link established successfully.")
+        except Exception as e:
+            print(f"Error connecting to hardware: {e}")
+            self.serial_connection = None
 
-# Perform min-max normalization to map hand into a standard 0.0 to 1.0 geometric space
-normalized_grid = (landmarks - min_coords) / hand_scale
-
-return normalized_grid
-
-    def generate_multiplexer_map(self, normalized_grid):
+    def process_raw_stream(self):
         """
-        Maps normalized spatial data directly into a programmatic sequence 
-        for the 128-node hardware switching matrix.
+        Listens to the incoming serial stream from the hardware,
+        parses out the global node indices, and maps them to their anatomical profiles.
         """
-        hardware_routing_table = []
-        for i, coordinate in enumerate(normalized_grid):
-            if i >= self.target_nodes:
-                break
-            # Translate normalized coordinates directly into a target hardware channel address
-            channel_assignment = min(int(np.mean(coordinate) * 128), 127) 
-            hardware_routing_table.append({
-                "node_index": i,
-                "spatial_vector": coordinate.tolist(),
-                "mux_channel_address": channel_assignment
-            })
-        return hardware_routing_table
+        if not self.serial_connection:
+            print("Cannot stream: Hardware connection is offline.")
+            return
 
-# Benchtop Validation Example
+        print("[STREAM] Listening for live 128-node matrix packets...")
+        try:
+            while True:
+                if self.serial_connection.in_waiting > 0:
+                    # Read incoming serial byte strings up to the newline terminator
+                    raw_line = self.serial_connection.readline().decode('utf-8').strip()
+                    
+                    # Ensure packet matches our Phase 2 ASCII standard protocol
+                    if raw_line.startswith('$'):
+                        # Strip '$' and split into individual node blocks
+                        node_payloads = raw_line[1:].split(',')
+                        
+                        for payload in node_payloads:
+                            if ':' in payload:
+                                # Unpack structured string format "NODE_ID:MAGNITUDE:PHASE"
+                                node_str, mag_str, phase_str = payload.split(':')
+                                node_id = int(node_str)
+                                magnitude = float(mag_str)
+                                phase = float(phase_str)
+                                
+                                # Clamp parameters safely inside the NumPy data matrix arrays
+                                if 0 <= node_id < self.total_nodes:
+                                    self.matrix_data[node_id, 0] = magnitude
+                                    self.matrix_data[node_id, 1] = phase
+                                    
+                        print(f" -> Live Stream Sample Frame Sync: Node [0] Magnitude = {self.matrix_data[0, 0]} Ω")
+                        
+        except KeyboardInterrupt:
+            print("\n[STREAM] Data collection paused by operator.")
+        except Exception as e:
+            print(f"[STREAM ERROR] Disconnected during runtime monitoring: {e}")
+        finally:
+            self.serial_connection.close()
+            print("[SERIAL] Port safely closed.")
+
 if __name__ == "__main__":
-    # Simulated raw pixel coordinates from a camera stream tracking 5 anatomical points
-    simulated_hand_data = [[100,100], # Wrist base,  # Left palm periphery,  # Right palm periphery,  # Index base coordinate
-        [190, 115]   # Pinky base coordinate
-    ]
-    
-    mapper = AdaptiveGridMapper(target_nodes=128)
-    normalized_space = mapper.normalize_hand_topology(simulated_hand_data)
-    routing_instructions = mapper.generate_multiplexer_map(normalized_space)
-    
-    print(f"[SUCCESS] Successfully mapped {len(routing_instructions)} target tissue zones to hardware multiplexer channels.")
-    print(f"[SAMPLE NODE 0]: {routing_instructions[0]}")
+    # Execution entry runway for live hardware ingestion testing
+    mapper = HandTopologyMapper(port='COM3', baudrate=9600)
+    mapper.process_raw_stream()
