@@ -99,24 +99,27 @@ public:
 int main() { 
     Layer2DSPPipeline dsp_engine; 
 
-    // =========================================================================
-    // STEP 1: ZERO-OHM SHORT CIRCUIT INITIALIZATION
-    // Put a solid jumper wire between row 5 and row 10, then pass raw line inputs below:
-    // =========================================================================
-    double hardware_short_real = 131420.0; // Insert the active real channel trace code here
-    double hardware_short_imag = -4200.0;  // Insert the active imaginary channel trace code here
-    
-    dsp_engine.record_zero_ohm_baseline(hardware_short_real, hardware_short_imag);
+    std::vector<std::pair<double, double>> live_hardware_stream;
 
-    // =========================================================================
-    // STEP 2: LIVE METRIC RUNWAY
-    // Place components back on Rows 5 & 10. The system will evaluate them cleanly.
-    // =========================================================================
-    std::vector<std::pair<double, double>> active_adc_stream = { 
-        {131881.0, -4500.0}, // Live Matrix Node 0
-        {131420.0, -4200.0}, // Live Matrix Node 1
-    };
+    // --- HARDWARE INTERACTION BRIDGE ---
+    // Reads directly from the physical Analog Devices SPI firmware buffer array
+    extern uint32_t AppBuff[];
+    extern uint32_t AppDataCount;
 
-    dsp_engine.process_live_matrix_sweep(active_adc_stream); 
+    if (AppDataCount == 0) {
+        std::cout << "[ERROR] No physical data arriving from AD5940 board. Check USB/SPI connection.\n";
+        return -1;
+    }
+
+    for (uint32_t i = 0; i < AppDataCount; i++) {
+        // Deconstruct the 32-bit registers into live real and imaginary vectors
+        int16_t live_real = (int16_t)(AppBuff[i] & 0xFFFF);
+        int16_t live_imag = (int16_t)((AppBuff[i] >> 16) & 0xFFFF);
+        
+        live_hardware_stream.push_back({(double)live_real, (double)live_imag});
+    }
+
+    // Process your real physical 4-wire circuit stream
+    dsp_engine.process_live_matrix_sweep(live_hardware_stream); 
     return 0;
 }
