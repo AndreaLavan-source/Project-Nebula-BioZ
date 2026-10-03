@@ -1,48 +1,82 @@
-# Project Nebula: Phase 2 Engineering Roadmap
+# 🗺️ Project Nebula: Phase 2 Engineering Roadmap
 
-## Iterative Scaling, Crosstalk Mitigation, and Tetrapolar Parameterization
+This document outlines the software development framework for scaling Project Nebula from a single-channel calibrated hardware bridge to a serialized 128-node multi-channel biosensing matrix.
 
-**Status:** Planning & Active Architecture Redesign  
-**Derived From:** Open-Source Peer Review ([r/BiomedicalEngineering](https://reddit.com) Validation)
+## 🧵 Phase 2 Architecture: The C++ / Python Integration Bridge
+
+To translate raw impedance signals into a live topographical color-mapped heatmap of the hand, the system uses a dual-layer architectural pipeline split across a physical USB-Serial interface:+------------------------------------+          +-----------------------------------+
+|  1. EVAL-ADICUP3029 / C++ FIRMWARE |          |    2. COMPUTER LAYER / PYTHON GUI |
+|  - Controls 128-Node Mux Switching |  Serial  |  - Ingests incoming ASCII Packets |
+|  - Triggers AD5940 AFE Drivers     | -------->|  - Parses Node IDs & Ohm Metrics  |
+|  - PACKS DATA INTO ASCII PACKETS   |   (USB)  |  - RENDERS LIVE GRAPHICAL HEATMAP |
++------------------------------------+          +-----------------------------------+---
+
+## 🛠️ Step-by-Step Implementation Milestone Tasks
+
+### Milestone 1: Standardize the Serial Communication Protocol
+The C++ firmware (`matrix_routing.cpp`) must write clean, structured data arrays to the microcontroller's UART TX line so the Python interface can interpret the coordinates without parsing lag.
+
+* **Packet Format Structure:** Every 128-node sweep frame must be delimited by an explicit starting character (`$`), followed by comma-separated node data pairs, and terminated by a newline character (`\n`).
+* **Packet String Syntax Example:**
+  ```text
+  $NODE_ID:MAGNITUDE:PHASE,NODE_ID:MAGNITUDE:PHASE\n
+  $0:1136.95:-13.68,1:1120.40:-14.10,2:1085.12:-12.30,...,127:1210.45:-15.20\n
+  ```
+
+### Milestone 2: Establish the Python Serial Ingestion Loop
+Update your Python framework to listen to the incoming hardware stream continuously using the `pyserial` processing library. 
+
+Add this dedicated communication thread block to your data collection pipeline to prevent the visualizer GUI from freezing up while waiting for incoming SPI bytes:
+
+```python
+import serial
+import threading
+
+def initialize_hardware_serial_stream(port_name="COM3", baud_rate=115200, visualizer_instance=None):
+    """
+    Spawns an isolated background thread to continuously pull live 
+    micro-topographical metrics from the physical AD5940 USB bridge.
+    """
+    def serial_reader_worker():
+        try:
+            ser = serial.Serial(port_name, baud_rate, timeout=1.0)
+            print(f"[SERIAL] Connected to EVAL-ADICUP3029 on {port_name} successfully.")
+            
+            while True:
+                # Read raw serial bytes up to the newline terminator
+                raw_line = ser.readline().decode('utf-8').strip()
+                
+                if raw_line.startswith('$'):
+                    # Strip the starting character and split into distinct node entries
+                    data_payload = raw_line[1:].split(',')
+                    
+                    for entry in data_payload:
+                        if ':' in entry:
+                            node_str, mag_str, phase_str = entry.split(':')
+                            node_id = int(node_str)
+                            magnitude = float(mag_str)
+                            
+                            # Safely route the live physical metric to the GUI layout array
+                            if visualizer_instance and node_id < visualizer_instance.total_nodes:
+                                gx, gy = visualizer_instance.node_spatial_mask[node_id]
+                                visualizer_instance.heatmap_matrix[gx, gy] = magnitude
+                                
+        except Exception as e:
+            print(f"[SERIAL ERROR] Disconnected or failed to read USB buffer: {e}")
+
+    # Launch worker loop as an independent background process
+    stream_thread = threading.Thread(target=serial_reader_worker, daemon=True)
+    stream_thread.start()
+```
+
+### Milestone 3: Sequential Node Matrix Switching Logic
+The C++ switching algorithm (`matrix_routing.cpp`) must execute a dead-time blanking interval (recommended **50 μs to 100 μs**) every time it updates its external multiplexer address bits to switch from one hand coordinate to another. This delay allows capacitive charge dissipation across the tissue boundary, entirely eliminating signal bleeding or ghost-node artifacts between neighboring anatomical cells.
 
 ---
 
-## 🎯 Strategic Pivot: Scaling to a 16/32-Channel Proof-of-Concept
+## 🤝 Target Competencies for Software Co-Founder Discovery
 
-To ensure maximum data integrity and prevent encoding errors into complex firmware switching logic, Project Nebula is pivoting from its initial 128-node conceptual deployment down to an **iterative 16 or 32-channel Proof-of-Concept (PoC)**. This allows for modular testing, stage-by-stage bug verification, and rigorous crosstalk characterization before scaling to full palmar topography.
-
----
-
-## Core Engineering Redesigns
-
-### 1. Tetrapolar (4-Pin) Measurement Configuration
-* **The Problem:** The initial bipolar/3-wire setup was heavily confounded by skin-surface contact impedance and interference at the electrode-tissue interface.
-* **The Solution:** Phase 2 implements a formal **tetrapolar array configuration**. For every channel measurement, two dedicated pins will drive the AC excitation current, while two entirely separate pins will sense the resulting voltage drop. This ensures contact impedance drops completely out of the sensed voltage, unlocking pristine data from deep sub-surface tissue layers.
-
-### 2. Standardized Uniform Mirrored Grid Geometry
-
-* **The Problem:** Designing asymmetrical layouts customized to specific anatomical palm creases introduces too many physical variables and increases manufacturing complexity.
-
-* **The Solution:** Phase 2 implements a single, standardized, uniform-pitch grid array across both hands (perfectly mirrored). Instead of building customized hardware shapes, the physical array will remain uniform. The unique creases and boundaries of individual palmar surfaces will be registered onto the grid afterward via software analysis, greatly simplifying hardware fabrication while maximizing spatial comparability.
-
-### 3. Safety & Calibration Protocols
-* **DC Blocking Enforcements:** Incorporating physical, hardware-level inline DC-blocking capacitors on all driving leads to ensure absolute human safety during benchtop live evaluations.
-* **Resistor-Capacitor Phantom Testing:** Halting all direct human-subject evaluation until the hardware is validated against a static, known network model. Calibration benchmarks require achieving **< 1% Magnitude Error** and **< 0.5° Phase Angle Error** per channel across a full multi-frequency sweep.
-
----
-
-## Software & Firmware Directives
-
-### Priority 1: The Stage-1 Data Logger
-Before writing the final C++ sequential matrix switching code, the immediate software objective is developing a basic, robust **Data Logger**. This tool will focus solely on capturing and printing stable, raw serial output (Magnitude and Corrected Phase) from a known system, ensuring software verification happens in clean, predictable stages.
-
----
-
-## 🚀 How to Join the Phase 2 Sprint
-
-We are actively seeking collaborators with experience in:
-
-* **Printed Circuit Board Design (Altium/KiCad):** Specifically dealing with guard traces, analog multiplexers, and Flex-PCBs.
-* **Embedded Software:** Setting up raw data logging and handling multi-channel serial streams.
-
-If you are interested in reviewing our schematics or helping build the Phase 2 test fixture, please **open an Issue** or comment on our main thread!
+To accelerate the delivery of Phase 2 objectives, candidates or software mentors looking at this repository should ideally bring expertise across these technical areas:
+* **Embedded System Frameworks:** Experience handling direct hardware abstractions, bare-metal timers, and SPI register writing on Cortex-M microcontrollers.
+* **Concurrency in Python:** Proficiency building multi-threaded real-time data visualizers (using `PyQt6`, `Tkinter`, or asynchronous `matplotlib` engines).
+* **Signal Processing (DSP):** Competency developing discrete filtering pipelines to handle complex math operations, ratiometric calibration arrays, and artifact suppression.
