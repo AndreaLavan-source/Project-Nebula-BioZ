@@ -3,9 +3,25 @@
 ### A Custom Isolated Architecture for Living Cryptographic Biometric Identification
 **Author:** Andrea Lavan 
 **Status:** Hardware Validation Phase (Complete) | Software Matrix Development (Seeking Co-Developer)
-## 🌌 The Vision: An AC "Mega-Pixel Camera" for Human Tissue
-Traditional electrodermal and biometric tracking (like Galvanic Skin Response) relies on Direct Current (DC). This acts like a single-pixel camera, blurring the entire hand's physiology into one unoptimized bulk measurement. If you try to add more sensors, the signals bleed together through shared grounding loops.
-**Project Nebula** completely reimagines this by introducing a **128-Node Symmetrical AC Matrix** arranged in **concentric, anatomical circles** across the palm and fingers. By injecting highly precise, safe Alternating Current (AC), the system functions like a high-resolution biological camera:
+
+# 128-Node Bio-Impedance Palmar Topography Scanner
+
+An advanced, non-invasive biometric mapping system designed to profile the structural and physiological geometry of human palmar flexion folds using multi-frequency alternating currents (AC).
+
+## 👁️ The Vision
+This project bridges empirical anatomical observation with cutting-edge biomedical engineering. By moving past historical nomenclature, this device analyzes the physical, subcutaneous structures of the human hand. It utilizes a tetrapolar sensing matrix to map localized tissue density, capacitance, and impedance variations across major anatomical landmarks.
+
+## 🛠️ Current Hardware Stack (In Development)
+* **Frontend Analog Core:** Analog Devices EVAL-AD5940BIOZ (Newark 50AK1328)
+* **Routing Network:** 32x CD74HC4067 16-Channel Analog Multiplexers (128-Node Grid)
+* **System Controller:** Arduino Mega 2560 R3
+* **Safety Isolation:** 100nF Ceramic DC-blocking capacitors
+
+## 🤝 Seeking Technical Co-Founder / Software Partner
+I am the primary inventor and concept architect (provisional patent active). I am currently establishing the physical hardware prototyping benchmarks. I am actively seeking a dedicated software partner to assist with:
+1. Low-level C++ firmware development for fast multiplexer switching tracks.
+
+2. A Python-based GUI to process raw impedance data arrays into a live visual heatmap.
 * **Red/Amber Zones:** Map paths of low resistance, identifying high sweat-duct alignment and real-time nervous system stress.
 * **Blue/Purple Zones:** Map paths of capacitive phase-delay, tracing dense tissue clusters and thick epidermal ridges where cell membranes naturally delay the signal.
 The result is a highly secure, living, dynamic cryptographic biological key that cannot be copied, faked, or bypassed.
