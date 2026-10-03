@@ -89,14 +89,19 @@ public:
 int main() { 
     Layer2DSPPipeline dsp_engine; 
 
-    // PLACEHOLDER: Replace these numbers with your actual live streaming AD5940 physical ADC codes!
-    // Example format: {Raw_Real_DFT_Code, Raw_Imag_DFT_Code}
-    std::vector<std::pair<double, double>> active_adc_stream = { 
-        {131881.0, -4500.0}, // Node 0
-        {131420.0, -4200.0}, // Node 1
-        {130950.0, -4100.0}  // Node 2
-    };
+    // 1. Point this directly to your live SPI driver loop instead of static brackets
+    std::vector<std::pair<double, double>> live_physical_stream;
 
-    dsp_engine.process_live_matrix_sweep(active_adc_stream); 
+    // Pull directly from the native hardware register buffers
+    for (uint32_t i = 0; i < AppDataCount; i++) {
+        // AppBuff collects raw real and imaginary values straight from your physical lines
+        double live_real = (int16_t)(AppBuff[i] & 0xFFFF);
+        double live_imag = (int16_t)((AppBuff[i] >> 16) & 0xFFFF);
+        
+        live_physical_stream.push_back({live_real, live_imag});
+    }
+
+    // 2. Pass your real physical signals into the pipeline
+    dsp_engine.process_live_matrix_sweep(live_physical_stream); 
     return 0;
 }
