@@ -1,4 +1,3 @@
-cpp
 // Define the shared address control pins
 const int S0_PIN = 2;
 const int S1_PIN = 3;
