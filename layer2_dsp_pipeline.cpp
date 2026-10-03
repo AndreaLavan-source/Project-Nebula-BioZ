@@ -124,15 +124,18 @@ extern uint32_t AppDataCount;
 int main() { 
     Layer2DSPPipeline dsp_engine; 
 
+    // Step 1: Fire the internal registers' auto-calibration sequences
     dsp_engine.initialize_afe_hardware_calibration();
 
     std::vector<std::pair<double, double>> live_hardware_stream;
 
+    // Safety guard to catch unpowered boards or loose USB links
     if (AppDataCount == 0) {
         std::cout << "[SYSTEM ERROR] SPI Ingestion Buffer Empty. Ensure EVAL-ADICUP3029 is Powered.\n";
         return -1;
     }
 
+    // Unpack data straight from the physical hardware register buffers
     for (uint32_t i = 0; i < AppDataCount; i++) {
         int16_t live_real = (int16_t)(AppBuff[i] & 0xFFFF);
         int16_t live_imag = (int16_t)((AppBuff[i] >> 16) & 0xFFFF);
@@ -140,12 +143,14 @@ int main() {
         live_hardware_stream.push_back({(double)live_real, (double)live_imag});
     }
 
-    // FIX: Access the first element of the vector stream correctly using [0]
+    // FIXED: Properly index the first active stream component inside the vector block
     double hardware_short_real = live_hardware_stream[0].first; 
     double hardware_short_imag = live_hardware_stream[0].second;  
     
+    // Command the system to zero itself out using your physical values
     dsp_engine.record_zero_ohm_baseline(hardware_short_real, hardware_short_imag);
 
+    // Step 3: Stream metrics continuously through the DSP pipeline
     dsp_engine.process_live_matrix_sweep(live_hardware_stream); 
 
     return 0;
