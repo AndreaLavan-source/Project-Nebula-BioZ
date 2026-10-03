@@ -29,9 +29,11 @@ int main() {
         live_hardware_stream.push_back({(double)live_real, (double)live_imag});
     }
 
-    // Capture the true live stream parameters from your breadboard jumper link
-    double hardware_short_real = live_hardware_stream.first; 
-double hardware_short_imag = live_hardware_stream.second; 
+    // --- FIXED STRUCTURAL ERROR ---
+    // 'live_hardware_stream' is a Vector list. You cannot read it using '.first' directly.
+    // We fetch the very first item in the list '[0]' to establish your hardware short link.
+    double hardware_short_real = live_hardware_stream[0].first; 
+    double hardware_short_imag = live_hardware_stream[0].second; 
     
     // Command the system to zero itself out using your physical values
     dsp_engine.record_zero_ohm_baseline(hardware_short_real, hardware_short_imag);
