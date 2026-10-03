@@ -1,4 +1,5 @@
 🚀 Seeking a Technical Co-Founder / Software Partner: Project Nebula (Cryptographic Biometrics)
+
 I have successfully completed the Phase 1 hardware empirical validation for Project Nebula—an advanced, patent-pending cryptographic biometric identification platform.
 Traditional biometric devices look at the hand as one bulk mass using Direct Current (DC). Project Nebula completely reimagines this by introducing a 128-Node Symmetrical AC Matrix arranged in concentric, anatomical coordinates across the palm. By injecting precise, safe Alternating Current (AC) under strict medical thresholds, it captures localized impedance magnitude and capacitive phase delay to generate a living, dynamic biological signature that cannot be bypassed or faked.
 🛠️ Current Status: Hardware is Validated
