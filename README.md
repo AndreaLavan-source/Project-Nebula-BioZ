@@ -11,11 +11,24 @@ Traditional electrodermal and biometric tracking (like Galvanic Skin Response) r
 The result is a highly secure, living, dynamic cryptographic biological key that cannot be copied, faked, or bypassed.
 ## 🛠️ Hardware Empirical Validation (The Proof)
 To prove the architecture works safely and accurately without signal drifting, I self-funded and bench-tested the platform using the medical-grade **Analog Devices EVAL-AD5940BIOZ** front-end. 
+
+### 1. Isolated Component Bridge Validation (System Baseline)
+Prior to biological evaluation, the AFE was cross-verified against a known 4-wire (tetrapolar) calibration bridge built via an isolated parallel RC network at a 10 kHz frequency sweep (100 mV Amplitude) to confirm the baseline integrity of the physical trace tracks and SensorPal configuration registers:
+* **Raw Magnitude Vector Output:** 1,136.959 Ω
+* **Raw DFT Phase Angle:** -193.685° 
+* **Corrected Phase Profile:** **-13.685°** *(180° math library inversion flip corrected)*
+* **Status:** **Prinstine Loop Integrity Established.** No open circuits, hardware drift, or unscaled saturation artifacts detected.
+
+### 2. Live Biological Asymmetry Baseline
 Operating under an active hardware safety loop strictly clamped to **≤ 10 μA**, I mapped the biological asymmetry between my own hands at a 10 kHz frequency sweep (300 mV Amplitude):
+
 | Metric | Left Hand (Ambidextrous) | Right Hand (Ambidextrous) | Biological Indication |
+| :--- | :--- | :--- | :--- |
 | **Impedance Magnitude** | 435.46 Ω | 491.28 Ω | Pristine deep-tissue penetration; distinct fluid/moisture variations. |
 | **Phase Angle (Corrected)** | -14.32° | -19.32° | Active cellular membrane capacitance tracking without hardware drift. |
-*(Note: Raw firmware outputs read at -143.42° and -199.32° due to a known 180-degree calculation flip in the default AD5940 complex math library combined with hardware isolation delays).*
+
+*(Note: Raw firmware outputs read at -143.42° and -199.32° on human skin due to a known 180-degree calculation flip in the default AD5940 complex math library combined with hardware isolation delays, mirroring the -193.685° shift observed in the hardware component bridge test).*
+
 ## 📜 Complete Thesis & Documentation
 The complete 5-chapter academic framework, covering the Micro-Topographical Node Configuration, Safety Architecture, and Technical Pilot Evaluation is available in this repository. 
 * [View Full Thesis Text](./thesis.md)
