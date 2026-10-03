@@ -143,7 +143,8 @@ int main() {
         live_hardware_stream.push_back({(double)live_real, (double)live_imag});
     }
 
-    // FIXED: Properly index the first active stream component inside the vector block
+    // --- CRITICAL SYNTAX FIX ---
+    // Grabs the first pair object out of the vector array using index [0] before reading the first/second data coordinates
     double hardware_short_real = live_hardware_stream[0].first; 
     double hardware_short_imag = live_hardware_stream[0].second;  
     
