@@ -30,8 +30,8 @@ int main() {
     }
 
     // Capture the true live stream parameters from your breadboard jumper link
-    double hardware_short_real = live_hardware_stream[0].first; 
-    double hardware_short_imag = live_hardware_stream[0].second;  
+    double hardware_short_real = live_hardware_stream.first; 
+double hardware_short_imag = live_hardware_stream.second; 
     
     // Command the system to zero itself out using your physical values
     dsp_engine.record_zero_ohm_baseline(hardware_short_real, hardware_short_imag);
