@@ -276,6 +276,7 @@ def simulate_palm_biometrics():
 if __name__ == "__main__":
     simulate_palm_biometrics()
 ```
+
 ## 11. Anatomy of a Convergence Zone
 
 The system maps the intersection of physical anatomy and electronic signal data by identifying specific **Convergence Zones**. 
