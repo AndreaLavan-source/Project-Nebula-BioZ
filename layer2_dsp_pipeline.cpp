@@ -7,77 +7,87 @@
 #define PI                      3.14159265358979323846
 
 struct ComplexImpedance {
-    double real_ohms;          // Calibrated material resistance (R)
-    double imaginary_ohms;     // Calibrated capacitive reactance (X)
-    double impedance_magnitude;// Final actual Ohm value (Z)
-    double phase_angle;        // Calculated biological delay in degrees
+    double real_ohms;
+    double imaginary_ohms;
+    double impedance_magnitude;
+    double phase_angle;
 };
 
 class Layer2DSPPipeline {
 private:
     double current_clamping_threshold_ua;
+    
+    // Physical Zero-Ohm Baseline Correction Storage Variables
+    double zero_ohm_offset_real;
+    double zero_ohm_offset_imag;
+    bool is_calibrated;
 
 public:
     Layer2DSPPipeline() {
-        current_clamping_threshold_ua = 10.0; // Strict human safety loop limit
+        current_clamping_threshold_ua = 10.0;
+        zero_ohm_offset_real = 0.0;
+        zero_ohm_offset_imag = 0.0;
+        is_calibrated = false;
     }
 
     /**
-     * INGESTION PIPELINE: Converts raw digital DFT vectors from physical wires 
-     * into true, calibrated bio-impedance Ohm metrics.
+     * COMMAND: Capture 0-Ohm System Short-Circuit Calibration Profile.
+     * Call this when you have placed the shorting link between Breadboard Rows 5 & 10.
+     */
+    void record_zero_ohm_baseline(double raw_real, double raw_imag) {
+        this->zero_ohm_offset_real = raw_real;
+        this->zero_ohm_offset_imag = raw_imag;
+        this->is_calibrated = true;
+        std::cout << "\n[CALIBRATION] Succeeded! 0-Ohm Wire Baseline Matrix Recorded:\n";
+        std::cout << "              -> Offset Real Vector: " << zero_ohm_offset_real << "\n";
+        std::cout << "              -> Offset Imag Vector: " << zero_ohm_offset_imag << "\n\n";
+    }
+
+    /**
+     * INGESTION PIPELINE: Subtracts baseline noise and scales raw digital signals.
      */
     ComplexImpedance process_hardware_dft_codes(double raw_real, double raw_imag) {
         ComplexImpedance calibrated;
-        
-        // --- HARDWARE-LEVEL CONVERSION CONSTANTS ---
-        const double RCAL_VALUE = 10000.0;    // Physical onboard 10k reference resistor
-        const double SYSTEM_GAIN = 5800.0;    // AD5940 high-speed hardware gain factor
+        const double RCAL_VALUE = 10000.0; // 10k reference resistor
+        const double SYSTEM_GAIN = 5800.0; // Hardware amplification factor
 
-        // 1. Calculate raw magnitude vector code from physical ADC lines
-        double raw_magnitude = std::sqrt((raw_real * raw_real) + (raw_imag * raw_imag));
+        // Subtract the 0-Ohm calibration offsets if recording is complete
+        double corrected_real = raw_real - this->zero_ohm_offset_real;
+        double corrected_imag = raw_imag - this->zero_ohm_offset_imag;
+
+        double raw_magnitude = std::sqrt((corrected_real * corrected_real) + (corrected_imag * corrected_imag));
         
-        // Safety Catch: Guard against division-by-zero open loops (The infinity sign bug)
         if (raw_magnitude < 1.0) {
-            calibrated.impedance_magnitude = 999999.9; // Return maximum bounding threshold
+            calibrated.impedance_magnitude = 999999.9;
             calibrated.phase_angle = 0.0;
-            calibrated.real_ohms = 999999.9;
-            calibrated.imaginary_ohms = 0.0;
             return calibrated;
         }
 
-        // 2. Compute absolute overall impedance magnitude in Ohms (Z)
+        // Compute actual system impedance magnitude in Ohms (Z)
         calibrated.impedance_magnitude = (RCAL_VALUE / raw_magnitude) * SYSTEM_GAIN;
         
-        // 3. Compute raw phase shift angle in degrees
-        double raw_phase_deg = std::atan2(raw_imag, raw_real) * (180.0 / PI);
+        // Calculate the physical raw phase shift
+        double raw_phase_deg = std::atan2(corrected_imag, corrected_real) * (180.0 / PI);
         
-        // 4. Digital Prism Filter: Correct for hardware buffer propagation flipping
+        // Correct vector phase layout
         if (raw_phase_deg < -90.0) {
             calibrated.phase_angle = raw_phase_deg + 180.0; 
         } else {
             calibrated.phase_angle = raw_phase_deg;
         }
         
-        // 5. Deconstruct calibrated magnitude back to pure physical Resistance and Reactance
-        double phase_rad = calibrated.phase_angle * (PI / 180.0);
-        calibrated.real_ohms = calibrated.impedance_magnitude * std::cos(phase_rad);
-        calibrated.imaginary_ohms = calibrated.impedance_magnitude * std::sin(phase_rad);
+        calibrated.real_ohms = calibrated.impedance_magnitude * std::cos(calibrated.phase_angle * (PI / 180.0));
+        calibrated.imaginary_ohms = calibrated.impedance_magnitude * std::sin(calibrated.phase_angle * (PI / 180.0));
         
         return calibrated;
     }
 
     void process_live_matrix_sweep(const std::vector<std::pair<double, double>>& live_hardware_stream) {
         std::cout << "[FIRMWARE] Streaming Layer 2 High-Density Multi-Channel Sweep Data...\n";
-        
         for (size_t node = 0; node < live_hardware_stream.size(); ++node) {
             if (node >= MAX_MATRIX_NODES) break;
 
-            // Extract values directly from the incoming stream
-            double raw_real = live_hardware_stream[node].first;
-            double raw_imag = live_hardware_stream[node].second;
-
-            // Send raw data values directly through calibration scaling
-            ComplexImpedance node_data = process_hardware_dft_codes(raw_real, raw_imag);
+            ComplexImpedance node_data = process_hardware_dft_codes(live_hardware_stream[node].first, live_hardware_stream[node].second);
 
             std::cout << " -> Node [" << node << "] Calibrated Impedance: " 
                       << node_data.impedance_magnitude << " Ohms | Phase Delay: " 
@@ -89,19 +99,24 @@ public:
 int main() { 
     Layer2DSPPipeline dsp_engine; 
 
-    // 1. Point this directly to your live SPI driver loop instead of static brackets
-    std::vector<std::pair<double, double>> live_physical_stream;
+    // =========================================================================
+    // STEP 1: ZERO-OHM SHORT CIRCUIT INITIALIZATION
+    // Put a solid jumper wire between row 5 and row 10, then pass raw line inputs below:
+    // =========================================================================
+    double hardware_short_real = 131420.0; // Insert the active real channel trace code here
+    double hardware_short_imag = -4200.0;  // Insert the active imaginary channel trace code here
+    
+    dsp_engine.record_zero_ohm_baseline(hardware_short_real, hardware_short_imag);
 
-    // Pull directly from the native hardware register buffers
-    for (uint32_t i = 0; i < AppDataCount; i++) {
-        // AppBuff collects raw real and imaginary values straight from your physical lines
-        double live_real = (int16_t)(AppBuff[i] & 0xFFFF);
-        double live_imag = (int16_t)((AppBuff[i] >> 16) & 0xFFFF);
-        
-        live_physical_stream.push_back({live_real, live_imag});
-    }
+    // =========================================================================
+    // STEP 2: LIVE METRIC RUNWAY
+    // Place components back on Rows 5 & 10. The system will evaluate them cleanly.
+    // =========================================================================
+    std::vector<std::pair<double, double>> active_adc_stream = { 
+        {131881.0, -4500.0}, // Live Matrix Node 0
+        {131420.0, -4200.0}, // Live Matrix Node 1
+    };
 
-    // 2. Pass your real physical signals into the pipeline
-    dsp_engine.process_live_matrix_sweep(live_physical_stream); 
+    dsp_engine.process_live_matrix_sweep(active_adc_stream); 
     return 0;
 }
