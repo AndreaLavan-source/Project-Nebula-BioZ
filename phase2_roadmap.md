@@ -24,7 +24,7 @@ The C++ firmware (`matrix_routing.cpp`) must write clean, structured data arrays
   ```
 
 ### Milestone 2: Establish the Python Serial Ingestion Loop
-Update your Python framework to listen to the incoming hardware stream continuously using the `pyserial` processing library. 
+Updated my Python framework to listen to the incoming hardware stream continuously using the `pyserial` processing library. 
 
 Add this dedicated communication thread block to your data collection pipeline to prevent the visualizer GUI from freezing up while waiting for incoming SPI bytes:
 
