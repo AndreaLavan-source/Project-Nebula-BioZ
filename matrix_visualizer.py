@@ -1,96 +1,92 @@
-import sys
+import serial
+import time
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
+import matplotlib.animation as animation
 
-# =========================================================================
-# PROJECT NEBULA: 128-NODE TOPOGRAPHICAL HEATMAP VISUALIZER
-# =========================================================================
-class ProjectNebulaVisualizer:
-    def __init__(self):
-        self.total_nodes = 128
-        # Define grid layout dimensions for parsing the hand geometry array
-        self.grid_size = 12 
-        
-        # Initialize an empty topographical matrix map representing coordinates on the palm
-        self.heatmap_matrix = np.zeros((self.grid_size, self.grid_size))
-        
-        # Generate anatomical layout mapping vector indices (0-127) onto geometric palm spatial coordinates
-        self.node_spatial_mask = self._generate_anatomical_spatial_coordinates()
+# --- SYSTEM CONFIGURATION ---
+SERIAL_PORT = 'COM3'  # Change to your actual microcontroller port (e.g., 'COM4' or '/dev/ttyACM0')
+BAUD_RATE = 9600
+ROWS, COLS = 8, 16    # 8 Multiplexers x 16 Channels = 128 Nodes
 
-    def _generate_anatomical_spatial_coordinates(self):
-        """
-        Maps linear node IDs (0-127) to 2D matrix indices representing concentric rows across the palm.
-        """
-        mapping = {}
-        node_id = 0
-        
-        # Simulating an anatomical concentric layout layout filling a 12x12 quadrant grid space smoothly
-        center_x, center_y = self.grid_size // 2, self.grid_size // 2
-        for radius in range(1, 6):
-            for angle in np.linspace(0, 2 * np.pi, radius * 8, endpoint=False):
-                if node_id >= self.total_nodes:
-                    break
-                x = int(center_x + radius * np.cos(angle))
-                y = int(center_y + radius * np.sin(angle))
-                if 0 <= x < self.grid_size and 0 <= y < self.grid_size:
-                    if (x, y) not in mapping.values():
-                        mapping[node_id] = (x, y)
-                        node_id += 1
+# Initialize global data grid for the visualization
+# This grid stores the live values coming from the hardware matrix
+data_grid = np.zeros((ROWS, COLS))
+
+# Try setting up the serial data pipeline
+try:
+    ser = serial.Serial(SERIAL_PORT, BAUD_RATE, timeout=0.1)
+    print(f"Successfully bound visualization engine to {SERIAL_PORT}")
+    time.sleep(2)  # Allow hardware board to cleanly settle after reboot
+except Exception as e:
+    print(f"Hardware connection skipped ({e}). Visualizer running in emulation mode.")
+    ser = None
+
+# --- GRAPHICAL INTERFACE SETUP ---
+fig, ax = plt.subplots(figsize=(10, 6))
+fig.canvas.manager.set_window_title('Project-Nebula-BioZ: Live 128-Node Matrix View')
+
+# Create the initial visual layout grid map using the 'plasma' colormap
+# Red/Amber = High sweat-duct alignment / stress; Blue/Purple = Capacitive delay
+im = ax.imshow(data_grid, cmap='plasma', interpolation='nearest', origin='upper', vmin=200, vmax=2000)
+
+# Add UI design labels and structural annotations
+ax.set_title("Project Nebula: 128-Node Real-Time Micro-Topographical Heatmap", fontsize=12, fontweight='bold', pad=15)
+ax.set_xlabel("Multiplexer Sourcing Channels (0 - 15)", fontsize=10, labelpad=10)
+ax.set_ylabel("Cascaded Multiplexer IC Banks (0 - 7)", fontsize=10, labelpad=10)
+
+# Add ticks matching the exact rows and columns of your multiplexer setup
+ax.set_xticks(np.arange(COLS))
+ax.set_yticks(np.arange(ROWS))
+
+# Add a visual color bar legend scaled to your validated Ohm thresholds
+cbar = fig.colorbar(im, ax=ax, orientation='vertical', pad=0.05)
+cbar.set_label("Impedance Magnitude (Ohms)", fontsize=10, labelpad=10)
+
+def parse_incoming_serial_data():
+    """
+    Pulls data lines from the serial port buffer and populates the 2D grid matrix.
+    If hardware is missing, it injects clean mathematical emulation noise to simulate tissue.
+    """
+    global data_grid
+    
+    if ser and ser.in_waiting > 0:
+        try:
+            raw_line = ser.readline().decode('utf-8').strip()
+            
+            # Parse standard Project Nebula protocol string: $NODE_ID:MAGNITUDE:PHASE,...
+            if raw_line.startswith('$'):
+                node_payloads = raw_line[1:].split(',')
+                for payload in node_payloads:
+                    if ':' in payload:
+                        node_str, mag_str, _ = payload.split(':')
+                        node_id = int(node_str)
+                        magnitude = float(mag_str)
                         
-        # Fill in any remaining nodes linearly outside the primary circle bounds
-        for r in range(self.grid_size):
-            for c in range(self.grid_size):
-                if node_id >= self.total_nodes:
-                    break
-                if (r, c) not in mapping.values():
-                    mapping[node_id] = (r, c)
-                    node_id += 1
-        return mapping
+                        # Map the 1D node ID (0-127) directly to 2D row/column grid indices
+                        if 0 <= node_id < (ROWS * COLS):
+                            r = node_id // COLS
+                            c = node_id % COLS
+                            data_grid[r, c] = magnitude
+        except Exception as e:
+            # Prevent occasional garbled serial bits from breaking the rendering loop
+            pass
+    elif ser is None:
+        # EMULATION MODE: Inject localized random fluctuations centered around your validated 1136 Ohm benchmark
+        base_val = 1136.959
+        data_grid = np.random.normal(loc=base_val, scale=100.0, size=(ROWS, COLS))
+        data_grid = np.clip(data_grid, 200, 2000)
 
-    def simulate_hardware_stream(self):
-        """
-        Simulates live input streaming values from your validated AD5940 4-wire hardware setup.
-        Replaces the infinity bug with real fluctuations mimicking biological fluid changes.
-        """
-        # Base baseline values derived from your successful 1,136 Ohm benchtop test
-        base_magnitude = 1136.959
-        
-        # Inject standard random noise over the 128 node channels to represent tissue variations
-        simulated_frame = np.random.normal(loc=base_magnitude, scale=150.0, size=self.total_nodes)
-        return np.clip(simulated_frame, 200.0, 2000.0)
+def update_visualization_frame(frame):
+    """
+    Core execution frame loop triggered continuously by the Matplotlib animator.
+    """
+    parse_incoming_serial_data()
+    im.set_array(data_grid)  # Refresh colors based on new data grid parameters
+    return [im]
 
-    def launch_live_heatmap(self):
-        """
-        Initializes the graphical window displaying the color-mapped biological matrix.
-        """
-        fig, ax = plt.subplots(figsize=(8, 7))
-        ax.set_title("Project Nebula: 128-Node Topographical Tissue Matrix", fontsize=12, fontweight='bold', pad=15)
-        
-        # Red/Amber = Low resistance (high sweat duct alignment); Blue/Purple = Capacitive delay
-        im = ax.imshow(self.heatmap_matrix, cmap='plasma', interpolation='gaussian', vmin=200, vmax=2000)
-        cbar = fig.colorbar(im, ax=ax, label="Impedance Magnitude (Ohms)")
-        
-        ax.axis('off') # Hides numerical grid borders to focus cleanly on anatomical clusters
+# Trigger the live high-performance animation framework loop
+ani = animation.FuncAnimation(fig, update_visualization_frame, blit=True, interval=100, cache_frame_data=False)
 
-        def update_frame(frame):
-            # 1. Fetch live incoming array numbers 
-            live_data_stream = self.simulate_hardware_stream()
-            
-            # 2. Map data arrays onto their physical 2D anatomical locations
-            for node_id, data_value in enumerate(live_data_stream):
-                if node_id in self.node_spatial_mask:
-                    grid_x, grid_y = self.node_spatial_mask[node_id]
-                    self.heatmap_matrix[grid_x, grid_y] = data_value
-            
-            # 3. Push refreshed pixels straight to graphic panel display
-            im.set_array(self.heatmap_matrix)
-            return [im]
-
-        # Trigger animation loop executing refreshing operations continuously 
-        ani = FuncAnimation(fig, update_frame, blit=True, interval=150, cache_frame_data=False)
-        plt.show()
-
-if __name__ == "__main__":
-    visualizer = ProjectNebulaVisualizer()
-    visualizer.launch_live_heatmap()
+plt.tight_layout()
+plt.show()
