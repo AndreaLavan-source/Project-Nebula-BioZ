@@ -6,6 +6,8 @@ I have self-funded and bench-tested the hardware front-end using the medical-gra
 Using a 4-wire (tetrapolar) physical cross-row header block configuration, I successfully established pristine closed-loop integrity over an isolated benchtop parallel RC calibration standard (10 kHz Sweep | 100 mV Amplitude):
 • Empirical Magnitude Vector Captured: 1,136.959 Ω
 • Phase Angle Calibration: -13.685° (180° math library inversion flip successfully mapped and corrected)
+
+
 🤝 What I Am Looking For
 The physical framework and layout are done. I am looking for a Software Engineer, Embedded Developer, or Technical Mentor proficient in C++ and Python to join me as a Co-Founder for Phase 2.
 Next Immediate Objectives:
