@@ -429,17 +429,18 @@ Layer 3 compiles the error-corrected biological matrix into an immutable, hardwa
 
 ### 3.2 Cryptographic Payload Architecture & Output Vector
 
-The system processes the steady-state biological matrix through the Fuzzy Extractor loop, applying a SHA-256 derivation step to yield a consistent, un-clonable cryptographic payload structure:
+The system processes the steady-state biological matrix through the Fuzzy Extractor loop, applying a derivation step to yield a consistent, un-clonable cryptographic payload structure:
 
 ```json
 {
   "version": "1.0.0",
+  "timestamp": 1791213600,
   "layer_metadata": {
     "nodes_scanned": 128,
     "hardware_afe_status": "VERIFIED_PASS"
   },
   "cryptographic_payload": {
-    "sovereign_identity_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sovereign_identity_hash": "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824",
     "fuzzy_extractor_helper_token": "8f3c1a9d4e2b7f0a5c8b1d9e3f4a2b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a"
   },
   "consent_vector": {
@@ -448,6 +449,9 @@ The system processes the steady-state biological matrix through the Fuzzy Extrac
   }
 }
 ```
+
+*   **Sovereign Identity Hash:** The finalized, immutable cryptographic key derived from cell-membrane phase delays.
+*   **Helper Token:** Non-secret auxiliary data used by the fuzzy extractor to reconstruct the exact same cryptographic key on subsequent scans despite minor natural fluctuations in hydration or temperature.
 *   **Sovereign Identity Hash:** The finalized, immutable cryptographic key derived from the cell-membrane phase delays.
 *   **Helper Token:** Non-secret auxiliary data used by the fuzzy extractor to reconstruct the exact same cryptographic key on subsequent scans despite minor natural fluctuations in hydration or temperature.
 
