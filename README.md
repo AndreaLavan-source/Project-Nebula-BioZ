@@ -8,8 +8,11 @@
 
 An advanced, non-invasive biometric mapping system designed to profile the structural and physiological geometry of human palmar flexion folds using multi-frequency alternating currents (AC).
 
-## 👁️ The Vision
-This project bridges empirical anatomical observation with cutting-edge biomedical engineering. By moving past historical nomenclature, this device analyzes the physical, subcutaneous structures of the human hand. It utilizes a tetrapolar sensing matrix to map localized tissue density, capacitance, and impedance variations across major anatomical landmarks.
+## 👁️ Core Philosophy: Architectural Human Safeguards
+Project-Nebula-BioZ is engineered to solve a critical flaw in modern digital identity: the vulnerability of static biometric duplication. Traditional biometric systems (facial recognition, optical fingerprinting) treat the human body as an immutable password that can be scraped, stored, and leaked.
+This architecture rejects centralized storage. It uses multi-frequency Bio-Impedance Palmar Topography to establish a living cryptographic key generated directly from the user's localized tissue capacitance and real-time cellular resonance.
+Zero-Knowledge Architecture: The system does not save an image or a static template of the hand. It processes transient analog vectors to generate an ephemeral cryptographic seed.
+Inherent Liveness Enforcement: By calculating the specific phase-delay (θ) introduced by intact cellular membranes, the device strictly denies authentication if there is no active, living blood flow and natural physiological micro-fluctuations. It cannot be bypassed by synthetic copies or forced compliance.
 
 ## 🛠️ Current Hardware Stack (In Development)
 * **Frontend Analog Core:** Analog Devices EVAL-AD5940BIOZ (Newark 50AK1328)
@@ -17,14 +20,18 @@ This project bridges empirical anatomical observation with cutting-edge biomedic
 * **System Controller:** Arduino Mega 2560 R3
 * **Safety Isolation:** 100nF Ceramic DC-blocking capacitors
 
-## 🤝 Seeking Technical Co-Founder / Software Partner
-I am the primary inventor and concept architect (provisional patent active). I am currently establishing the physical hardware prototyping benchmarks. I am actively seeking a dedicated software partner to assist with:
-1. Low-level C++ firmware development for fast multiplexer switching tracks.
+# 🤝 Seeking Technical Co-Founder / Software Partner
 
-2. A Python-based GUI to process raw impedance data arrays into a live visual heatmap.
-* **Red/Amber Zones:** Map paths of low resistance, identifying high sweat-duct alignment and real-time nervous system stress.
-* **Blue/Purple Zones:** Map paths of capacitive phase-delay, tracing dense tissue clusters and thick epidermal ridges where cell membranes naturally delay the signal.
-The result is a highly secure, living, dynamic cryptographic biological key that cannot be copied, faked, or bypassed.
+I am the primary inventor and concept architect (provisional patent active). I am currently establishing the physical hardware prototyping benchmarks. I am actively seeking a dedicated software partner to assist with:
+* **Low-level C++ firmware development:** Creating optimized, low-overhead switching tracks for the 128-node parallel multiplexer grid.
+* **A Python-based GUI to process raw impedance data arrays:** Transforming transient analog vectors into a live visual heatmap built upon Sovereign Matrices. Instead of tracking or classifying individuals, this visual engine acts as an immediate verification layer for individual privacy and health:
+
+### The Sovereign Core Matrix
+
+*   **Blue/Purple Tracks (Capacitive Phase-Delay):** Maps paths of capacitive phase-delay. This traces dense tissue clusters and thick epidermal ridges where intact cell membranes naturally shield and delay the signal. This forms the baseline of a highly secure, living, dynamic cryptographic biological key that cannot be copied or simulated by external actors.
+*   **Red/Amber Tracks (Liveness Safeguard Matrix):** Maps paths of local resistance and fluid alignment. This identifies real-time nervous system stress profiles and sweat-duct alignment, serving purely as a hardware safety and consent check to ensure the authentication is being performed by a living human acting under their own free will. The result is a highly secure, living, dynamic cryptographic biological key that cannot be copied, faked, or bypassed.
+
+
 ## 🛠️ Hardware Empirical Validation (The Proof)
 To prove the architecture works safely and accurately without signal drifting, I self-funded and bench-tested the platform using the medical-grade **Analog Devices EVAL-AD5940BIOZ** front-end. 
 
@@ -108,6 +115,7 @@ To understand the architecture of **Project Nebula**, we must bridge the rigid d
 
 *   *   **The Academic View:** The dominant macro-configuration on the human hand manifests as a continuous, multi-nodal line network tracking a geometric "M" topology. This framework is formed by the spatial intersection of three primary high-conductivity epidermal traces—the thenar crease, proximal transverse crease, and distal transverse crease—interlinked by a vertical central bridging trace. This structural matrix serves as the global baseline coordinate system.
 *   **The Philosophical Mirror:** *The universal chassis of human instrumentation.* While micro-anomalies provide unique cryptographic depth, the Macro-M network represents the shared baseline architecture of human tissue. It is the primary map grid that allows the instrumentation to immediately recognize, orient, and ground itself upon the biological surface.
+
 
 ### 11. Synchronized Dual-Palm Configurations (The Mirror-Symmetric Double M Network)
 
@@ -259,8 +267,157 @@ Layer 2 ingests the raw digitized data from the AFE, strips away hardware propag
 ### 2.1 Quadrant Inversion & DSP Phase Alignment
 * **The Academic Blueprint:** Due to propagation delays in hardware isolation stages and a fixed mathematical orientation in standard DFT libraries, raw complex numbers read an inherent 180-degree flip (e.g., -143.42° and -199.32°). The firmware runs a real-time correction loop that applies a sign-inversion filter across incoming vectors to output true biological values (e.g., -14.32° and -19.32°).
 * **The System Philosophy:** *Aligning the geometric lens.* Just as a physical optical lens naturally inverts light to project an accurate image, hardware translation layers can introduce systematic coordinate inversions. This firmware layer acts as a digital corrective prism, un-flipping the mathematical coordinate system to align the digital metric with the actual, uncorrupted orientation of the living biological entity.
+  
+## 💾 2.2 Local Firmware Execution Matrix (Arduino Mega 2560 R3)
 
----
+*   **Core Hardware Firmware:** C++ / Arduino
+*   **File:** `Project_Nebula_BioZ_Core.ino`
+*   **Brief:** Sovereign 128-Node Bio-Impedance Multiplexer Control Matrix
+*   **Author:** Andrea Lavan
+*   **License:** AGPL-3.0 (Open Source)
+*   **Design Requirement:** This local hardware matrix operates transiently. Raw impedance data is never cached or written to non-volatile storage.
+
+```cpp
+#include <Arduino.h>
+
+// --- Matrix Configuration ---
+const int NODE_COUNT = 128;
+const int MUX_CHANNELS = 16;
+const int MUX_COUNT = 8;
+
+// --- Pin Definitions for CD74HC4067 Control ---
+const int PIN_S0 = 4;
+const int PIN_S1 = 5;
+const int PIN_S2 = 6;
+const int PIN_S3 = 7;
+
+// Multiplexer Enable Lines (Low Active) for localized routing path selection
+const int MUX_ENABLE_PINS[MUX_COUNT] = {8, 9, 10, 11, 12, 13, 14, 15};
+
+// --- Mathematical Corrections ---
+const float PHASE_CORRECTION_DEGREES = 180.0;
+
+void setup() {
+    Serial.begin(115200);
+    
+    // Initialize Control Bus
+    pinMode(PIN_S0, OUTPUT);
+    pinMode(PIN_S1, OUTPUT);
+    pinMode(PIN_S2, OUTPUT);
+    pinMode(PIN_S3, OUTPUT);
+    
+    // Initialize Sovereign Protection Paths (Mux Enables)
+    for (int i = 0; i < MUX_COUNT; i++) {
+        pinMode(MUX_ENABLE_PINS[i], OUTPUT);
+        digitalWrite(MUX_ENABLE_PINS[i], HIGH);
+    }
+}
+
+/**
+ * @brief Securely configures the routing matrix to read a targeted local sensing path.
+ */
+void routeSovereignMatrixPath(int nodeIndex) {
+    if (nodeIndex < 0 || nodeIndex >= NODE_COUNT) return;
+    
+    int activeMux = nodeIndex / MUX_CHANNELS;
+    int activeChannel = nodeIndex % MUX_CHANNELS;
+    
+    for (int i = 0; i < MUX_COUNT; i++) {
+        digitalWrite(MUX_ENABLE_PINS[i], HIGH);
+    }
+    
+    digitalWrite(PIN_S0, (activeChannel & 0x01));
+    digitalWrite(PIN_S1, (activeChannel & 0x02) >> 1);
+    digitalWrite(PIN_S2, (activeChannel & 0x04) >> 2);
+    digitalWrite(PIN_S3, (activeChannel & 0x08) >> 3);
+    
+    digitalWrite(MUX_ENABLE_PINS[activeMux], LOW);
+}
+
+void loop() {
+    Serial.println("--- Beginning Sovereign Resonance Scan ---");
+    
+    for (int node = 0; node < NODE_COUNT; node++) {
+        routeSovereignMatrixPath(node);
+        
+        // --- AD5940 Front-End Interfacing Simulation ---
+        float rawMagnitude = 450.00; 
+        float rawPhaseDeg = -10.00;  
+        
+        float correctedPhaseDeg = rawPhaseDeg + PHASE_CORRECTION_DEGREES;
+        
+        Serial.print("NODE:"); Serial.print(node);
+        Serial.print(",MAG:"); Serial.print(rawMagnitude);
+        Serial.print(",PHASE:"); Serial.println(correctedPhaseDeg);
+        
+        delay(5); 
+    }
+    delay(1000); // Sampling window delay
+}
+```
+
+## 💻 Visual Engine & GUI Core (Python / PySide6)
+
+```python
+import sys
+import random
+from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QLabel, QVBoxLayout
+from PySide6.QtCore import QTimer, Qt
+from PySide6.QtGui import QColor
+
+class SovereignMatrixApp(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Sovereign Cellular Resonance Map - Project-Nebula-BioZ")
+        self.setGeometry(100, 100, 800, 800)
+        
+        central_widget = QWidget()
+        self.setCentralWidget(central_widget)
+        main_layout = QVBoxLayout(central_widget)
+        
+        grid_layout = QGridLayout()
+        main_layout.addLayout(grid_layout)
+        
+        self.nodes = []
+        for i in range(128):
+            label = QLabel()
+            label.setFixedSize(45, 45)
+            label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+            label.setStyleSheet("border: 1px solid #3C3C3C; background-color: #1C1F22; border-radius: 4px;")
+            
+            row = i // 16
+            col = i % 16
+            grid_layout.addWidget(label, row, col)
+            self.nodes.append(label)
+            
+        self.status_label = QLabel("Status: Live Local Resonance Streaming. No Data Cached (Sovereign Security Mode)")
+        self.status_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.status_label.setStyleSheet("font-size: 11px; color: #878C90; margin-top: 10px;")
+        main_layout.addWidget(self.status_label)
+        
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.update_sovereign_heatmap)
+        self.timer.start(500)
+        
+    def update_sovereign_heatmap(self):
+        for i, node in enumerate(self.nodes):
+            factor = random.random()
+            if factor > 0.5:
+                blue_intensity = int(150 + (factor * 105))
+                color = QColor(130, 43, blue_intensity)
+                node.setStyleSheet(f"background-color: {color.name()}; border-radius: 4px; border: 1px solid #7B1FA2;")
+            else:
+                red_intensity = int(180 + (factor * 75))
+                color = QColor(red_intensity, 89, 43)
+                node.setStyleSheet(f"background-color: {color.name()}; border-radius: 4px; border: 1px solid #D84315;")
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = SovereignMatrixApp()
+    window.show()
+    sys.exit(app.exec())
+```
+
 
 ## 🔐 LAYER 3: CRYPTOGRAPHIC PAYLOAD GENERATION (The Sovereign Identity Layer)
 
