@@ -427,6 +427,29 @@ Layer 3 compiles the error-corrected biological matrix into an immutable, hardwa
 * **The Academic Blueprint:** Tissue properties exhibit biological asymmetry (e.g., Left Hand 435.46 Ω vs. Right Hand 491.28 Ω). Because biological signals naturally fluctuate with ambient temperature and hydration levels, a Fuzzy Extractor block applies helper data algorithms to smooth out systemic noise without altering the core unique baseline.
 * **The System Philosophy:** *The immutable biometric seal.* In a digital environment increasingly saturated by synthetic replication and artificial vectors, unique biological asymmetry stands as an un-spoofable anchor of individual presence. This layer honors biological autonomy by transforming natural, localized physical variations into a secure cryptographic key—proving that your biological identity is intrinsically secure, unique to the individual, and structurally resilient against external simulation.
 
+### 3.2 Cryptographic Payload Architecture & Output Vector
+
+The system processes the steady-state biological matrix through the Fuzzy Extractor loop, applying a SHA-256 derivation step to yield a consistent, un-clonable cryptographic payload structure:
+
+```json
+{
+  "version": "1.0.0",
+  "layer_metadata": {
+    "nodes_scanned": 128,
+    "hardware_afe_status": "VERIFIED_PASS"
+  },
+  "cryptographic_payload": {
+    "sovereign_identity_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fuzzy_extractor_helper_token": "8f3c1a9d4e2b7f0a5c8b1d9e3f4a2b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a"
+  },
+  "consent_vector": {
+    "liveness_check": "ACTIVE_HUMAN_CONFIRMED",
+    "autonomic_stress_index": "0.14"
+  }
+}
+```
+*   **Sovereign Identity Hash:** The finalized, immutable cryptographic key derived from the cell-membrane phase delays.
+*   **Helper Token:** Non-secret auxiliary data used by the fuzzy extractor to reconstruct the exact same cryptographic key on subsequent scans despite minor natural fluctuations in hydration or temperature.
 
 ## 👁️ Future Roadmap: Computer Vision Adaptive Grid Scale
 
