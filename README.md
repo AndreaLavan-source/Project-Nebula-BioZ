@@ -34,15 +34,30 @@ Inherent Liveness Enforcement: By calculating the specific phase-delay (θ) intr
 * **Signal Logic Alignment:** True 3.3V Native Bus. The TXS0108E logic level shifter has been stripped from the layout, removing hardware drift, logic-skew propagation, and additional loop overhead.
 
 # 🤝 Seeking Technical Co-Founder / Software Partner
+I am the primary inventor and concept architect (**provisional patent active**). I am currently establishing the physical hardware prototyping benchmarks and am actively seeking a dedicated software partner to assist with:
 
-I am the primary inventor and concept architect (provisional patent active). I am currently establishing the physical hardware prototyping benchmarks. I am actively seeking a dedicated software partner to assist with:
-* **Low-level C++ firmware development:** Creating optimized, low-overhead switching tracks for the 128-node parallel multiplexer grid.
-* **A Python-based GUI to process raw impedance data arrays:** Transforming transient analog vectors into a live visual heatmap built upon Sovereign Matrices. Instead of tracking or classifying individuals, this visual engine acts as an immediate verification layer for individual privacy and health:
+* **Low-Level C++ Firmware Development:**
+  * Create optimized, low-overhead switching tracks.
+  * Manage the 128-node parallel multiplexer grid.
+* **Python-Based GUI:**
+  * Process raw impedance data arrays in real time.
+  * Transform transient analog vectors into a live visual heatmap built upon Sovereign Matrices.
 
-### The Sovereign Core Matrix
+    **Note: Instead of tracking or classifying individuals, this visual engine acts as an immediate verification layer for individual privacy and health.**
 
-*   **Blue/Purple Tracks (Capacitive Phase-Delay):** Maps paths of capacitive phase-delay. This traces dense tissue clusters and thick epidermal ridges where intact cell membranes naturally shield and delay the signal. This forms the baseline of a highly secure, living, dynamic cryptographic biological key that cannot be copied or simulated by external actors.
-*   **Red/Amber Tracks (Liveness Safeguard Matrix):** Maps paths of local resistance and fluid alignment. This identifies real-time nervous system stress profiles and sweat-duct alignment, serving purely as a hardware safety and consent check to ensure the authentication is being performed by a living human acting under their own free will. The result is a highly secure, living, dynamic cryptographic biological key that cannot be copied, faked, or bypassed.
+---
+
+## 🌀 The Sovereign Core Matrix
+
+### 🟦 Purple/Blue Tracks (Capacitive Phase-Delay)
+* **Function:** Maps paths of capacitive phase-delay.
+* **Mechanism:** Traces dense tissue clusters and thick epidermal ridges where intact cell membranes naturally shield and delay the signal.
+* **Purpose:** Forms the baseline of a highly secure, living, dynamic cryptographic biological key that cannot be copied or simulated by external actors.
+
+### 🟥 Red/Amber Tracks (Liveness Safeguard Matrix)
+* **Function:** Maps paths of local resistance and fluid alignment.
+* **Mechanism:** Identifies real-time physiological indicators to ensure the system is interacting with a live subject.
+Use code with caution.
 
 
 ## 🛠️ Hardware Empirical Validation (The Proof)
