@@ -17,17 +17,17 @@ Inherent Liveness Enforcement: By calculating the specific phase-delay (θ) intr
 ## 🛠️ Current Hardware Stack (In Development)
 ### 🎛️ System Controller
 * **Teensy 4.1** (600MHz ARM Cortex-M7 Platform)
-  * **Architectural Advantage:** Upgraded from Arduino Mega to resolve memory boundaries and transmission latency. 
-  * **Memory & Speed:** Features 1,024 KB SRAM to native-buffer the 128-node transient vector matrix, alongside 600MHz clock speeds for near-instantaneous multiplexer switching.
+* **Architectural Advantage:** Upgraded from Arduino Mega to resolve memory boundaries and transmission latency. 
+* **Memory & Speed:** Features 1,024 KB SRAM to native-buffer the 128-node transient vector matrix, alongside 600MHz clock speeds for near-instantaneous multiplexer switching.
   * **Data Throughput:** Utilizes 480 Mbps Native USB to drive a real-time Python GUI data stream without buffer bottlenecks.
 
 ### 🔌 Frontend Analog Core
 * **Analog Devices EVAL-AD5940BIOZ** (Medical-Grade Bio-Impedance AFE)
-  * **Signal Breakout Interconnect:** 48-Pin Heavy-Duty Screw Terminal Expansion Board (Direct Solderless Bridging).
+* **Signal Breakout Interconnect:** 48-Pin Heavy-Duty Screw Terminal Expansion Board (Direct Solderless Bridging).
 
 ### 🛣️ Routing Network
 * **32x CD74HC4067 16-Channel Analog Multiplexers**
-  * **Grid Mapping:** 128-Node Bio-Impedance Grid mapped via a custom FR4 PCB.
+* **Grid Mapping:** 128-Node Bio-Impedance Grid mapped via a custom FR4 PCB.
 
 ### 🛡️ Safety & Signal Integrity
 * **Safety Isolation:** 100nF Ceramic DC-blocking capacitors.
