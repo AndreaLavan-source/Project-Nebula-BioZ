@@ -325,67 +325,28 @@ const int PIN_S3 = 7;
 const int MUX_EN_PINS[MUX_COUNT] = {0, 1, 2, 3, 8, 9, 14, 15};
 ```
 "Refactored architecture to Teensy 4.1 and fixed SPI pin mapping"
-## 💻 Visual Engine & GUI Core (Python / PySide6)
+## 🔌 The Teensy 4.1 to AD5940 SPI Wiring Blueprint
 
-```python
-import sys
-import random
-from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout, QLabel, QVBoxLayout
-from PySide6.QtCore import QTimer, Qt
-from PySide6.QtGui import QColor
+| Signal Function | Teensy 4.1 Breakout Pin | EVAL-AD5940BIOZ Pin Location | Purpose in Project-Nebula-BioZ |
+| :--- | :--- | :--- | :--- |
+| **MOSI** (Data Out) | Pin 11 | Shield Pin D11 (P3, Pin 4) | Sends configuration registers and calibration commands from Teensy to AFE. |
+| **MISO** (Data In) | Pin 12 | Shield Pin D12 (P3, Pin 5) | Streams the raw DFT magnitude vectors and phase angles back to Teensy. |
+| **SCK** (Clock) | Pin 13 | Shield Pin D13 (P3, Pin 2) | Synchronizes high-speed digital data transfer up to 16+ MHz. |
+| **CS** (Chip Select) | Pin 10 | Shield Pin D10 (P3, Pin 3) | Latches the SPI line low to target the AD5940 for communication. |
+| **AD5940_RST** | Pin 16 | Shield Pin D4 (P1, Pin 4) | Hardware Reset line to force a hard clear of the AD5940 runtime memory state. |
+| **AD5940_INT** | Pin 17 | Shield Pin D3 (P4, Pin 3) | Hardware Interrupt line (GP0). Alerts Teensy instantly when a data sweep is ready. |
+| **3.3V Power** | 3.3V Pin | Shield 3V3 Pin | Powers the analog core directly from the regulated 3.3V line. |
+| **Ground** | GND Pin | Shield GND Pin | Tied securely to the `[Heavy Metal Grounding Plate]` baseline. |
 
-class SovereignMatrixApp(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.setWindowTitle("Sovereign Cellular Resonance Map - Project-Nebula-BioZ")
-        self.setGeometry(100, 100, 800, 800)
-        
-        central_widget = QWidget()
-        self.setCentralWidget(central_widget)
-        main_layout = QVBoxLayout(central_widget)
-        
-        grid_layout = QGridLayout()
-        main_layout.addLayout(grid_layout)
-        
-        self.nodes = []
-        for i in range(128):
-            label = QLabel()
-            label.setFixedSize(45, 45)
-            label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-            label.setStyleSheet("border: 1px solid #3C3C3C; background-color: #1C1F22; border-radius: 4px;")
-            
-            row = i // 16
-            col = i % 16
-            grid_layout.addWidget(label, row, col)
-            self.nodes.append(label)
-            
-        self.status_label = QLabel("Status: Live Local Resonance Streaming. No Data Cached (Sovereign Security Mode)")
-        self.status_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.status_label.setStyleSheet("font-size: 11px; color: #878C90; margin-top: 10px;")
-        main_layout.addWidget(self.status_label)
-        
-        self.timer = QTimer()
-        self.timer.timeout.connect(self.update_sovereign_heatmap)
-        self.timer.start(500)
-        
-    def update_sovereign_heatmap(self):
-        for i, node in enumerate(self.nodes):
-            factor = random.random()
-            if factor > 0.5:
-                blue_intensity = int(150 + (factor * 105))
-                color = QColor(130, 43, blue_intensity)
-                node.setStyleSheet(f"background-color: {color.name()}; border-radius: 4px; border: 1px solid #7B1FA2;")
-            else:
-                red_intensity = int(180 + (factor * 75))
-                color = QColor(red_intensity, 89, 43)
-                node.setStyleSheet(f"background-color: {color.name()}; border-radius: 4px; border: 1px solid #D84315;")
+### ⚠️ Two Hardware Safety Warnings to Prevent Component Loss
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    window = SovereignMatrixApp()
-    window.show()
-    sys.exit(app.exec())
-```
+> [!WARNING]
+> **1. Keep the Power Supply Strict**
+> Double-check that your Teensy breakout board's 3.3V pin is feeding the AD5940 shield. **Never plug the Teensy's VUSB or VIN (5V) pins into the shield**, as the AD5940 silicon will suffer permanent thermal damage.
+
+> [!CAUTION]
+> **2. Keep the Shared SPI Bus Isolated**
+> Because pins 11, 12, and 13 are managing high-speed clock pulses, keep your multiplexer address lines (`S0`-`S3`) and multiplexer enable lines (`EN`) strictly on the digital pins assigned earlier (Pins 0–9, 14, 15). If an address wire accidentally brushes against an SPI clock line, your complex phase calculations (θ) will immediately collapse into noise.
 
 
 ## 🔐 LAYER 3: CRYPTOGRAPHIC PAYLOAD GENERATION (The Sovereign Identity Layer)
