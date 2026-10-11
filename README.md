@@ -15,10 +15,23 @@ Zero-Knowledge Architecture: The system does not save an image or a static templ
 Inherent Liveness Enforcement: By calculating the specific phase-delay (θ) introduced by intact cellular membranes, the device strictly denies authentication if there is no active, living blood flow and natural physiological micro-fluctuations. It cannot be bypassed by synthetic copies or forced compliance.
 
 ## 🛠️ Current Hardware Stack (In Development)
-* **Frontend Analog Core:** Analog Devices EVAL-AD5940BIOZ (Newark 50AK1328)
-* **Routing Network:** 32x CD74HC4067 16-Channel Analog Multiplexers (128-Node Grid)
-* **System Controller:** Arduino Mega 2560 R3
-* **Safety Isolation:** 100nF Ceramic DC-blocking capacitors
+### 🎛️ System Controller
+* **Teensy 4.1** (600MHz ARM Cortex-M7 Platform)
+  * **Architectural Advantage:** Upgraded from Arduino Mega to resolve memory boundaries and transmission latency. 
+  * **Memory & Speed:** Features 1,024 KB SRAM to native-buffer the 128-node transient vector matrix, alongside 600MHz clock speeds for near-instantaneous multiplexer switching.
+  * **Data Throughput:** Utilizes 480 Mbps Native USB to drive a real-time Python GUI data stream without buffer bottlenecks.
+
+### 🔌 Frontend Analog Core
+* **Analog Devices EVAL-AD5940BIOZ** (Medical-Grade Bio-Impedance AFE)
+  * **Signal Breakout Interconnect:** 48-Pin Heavy-Duty Screw Terminal Expansion Board (Direct Solderless Bridging).
+
+### 🛣️ Routing Network
+* **32x CD74HC4067 16-Channel Analog Multiplexers**
+  * **Grid Mapping:** 128-Node Bio-Impedance Grid mapped via a custom FR4 PCB.
+
+### 🛡️ Safety & Signal Integrity
+* **Safety Isolation:** 100nF Ceramic DC-blocking capacitors.
+* **Signal Logic Alignment:** True 3.3V Native Bus. The TXS0108E logic level shifter has been stripped from the layout, removing hardware drift, logic-skew propagation, and additional loop overhead.
 
 # 🤝 Seeking Technical Co-Founder / Software Partner
 
