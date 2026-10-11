@@ -19,7 +19,7 @@ Inherent Liveness Enforcement: By calculating the specific phase-delay (θ) intr
 * **Teensy 4.1** (600MHz ARM Cortex-M7 Platform)
 * **Architectural Advantage:** Upgraded from Arduino Mega to resolve memory boundaries and transmission latency. 
 * **Memory & Speed:** Features 1,024 KB SRAM to native-buffer the 128-node transient vector matrix, alongside 600MHz clock speeds for near-instantaneous multiplexer switching.
-  * **Data Throughput:** Utilizes 480 Mbps Native USB to drive a real-time Python GUI data stream without buffer bottlenecks.
+* **Data Throughput:** Utilizes 480 Mbps Native USB to drive a real-time Python GUI data stream without buffer bottlenecks.
 
 ### 🔌 Frontend Analog Core
 * **Analog Devices EVAL-AD5940BIOZ** (Medical-Grade Bio-Impedance AFE)
