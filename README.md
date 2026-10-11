@@ -296,14 +296,14 @@ Layer 2 ingests the raw digitized data from the AFE, strips away hardware propag
 * **The Academic Blueprint:** Due to propagation delays in hardware isolation stages and a fixed mathematical orientation in standard DFT libraries, raw complex numbers read an inherent 180-degree flip (e.g., -143.42° and -199.32°). The firmware runs a real-time correction loop that applies a sign-inversion filter across incoming vectors to output true biological values (e.g., -14.32° and -19.32°).
 * **The System Philosophy:** *Aligning the geometric lens.* Just as a physical optical lens naturally inverts light to project an accurate image, hardware translation layers can introduce systematic coordinate inversions. This firmware layer acts as a digital corrective prism, un-flipping the mathematical coordinate system to align the digital metric with the actual, uncorrupted orientation of the living biological entity.
   
-## 💾 2.2 Local Firmware Execution Matrix (Arduino Mega 2560 R3)
+## 💾 2.2 Local Firmware Execution Matrix (Teensy 4.1)
 
-*   **Core Hardware Firmware:** C++ / Arduino
-*   **File:** `Project_Nebula_BioZ_Core.ino`
-*   **Brief:** Sovereign 128-Node Bio-Impedance Multiplexer Control Matrix
-*   **Author:** Andrea Lavan
-*   **License:** AGPL-3.0 (Open Source)
-*   **Design Requirement:** This local hardware matrix operates transiently. Raw impedance data is never cached or written to non-volatile storage.
+* **Core Hardware Firmware:** C++ / Teensyduino (Arduino IDE)
+* **File:** `Project_Nebula_BioZ_Core.ino`
+* **Brief:** Sovereign 128-Node Bio-Impedance Multiplexer Control Matrix
+* **Author:** Andrea Lavan
+* **License:** AGPL-3.0 (Open Source)
+* **Design Requirement:** This local hardware matrix operates transiently. Raw impedance data is never cached or written to non-volatile storage.
 
 ```cpp
 #include <Arduino.h>
@@ -314,76 +314,17 @@ const int MUX_CHANNELS = 16;
 const int MUX_COUNT = 8;
 
 // --- Pin Definitions for CD74HC4067 Control ---
+// Shared address lines connected to Teensy 4.1 Digital Output Pins
 const int PIN_S0 = 4;
 const int PIN_S1 = 5;
 const int PIN_S2 = 6;
 const int PIN_S3 = 7;
 
-// Multiplexer Enable Lines (Low Active) for localized routing path selection
-const int MUX_ENABLE_PINS[MUX_COUNT] = {8, 9, 10, 11, 12, 13, 14, 15};
-
-// --- Mathematical Corrections ---
-const float PHASE_CORRECTION_DEGREES = 180.0;
-
-void setup() {
-    Serial.begin(115200);
-    
-    // Initialize Control Bus
-    pinMode(PIN_S0, OUTPUT);
-    pinMode(PIN_S1, OUTPUT);
-    pinMode(PIN_S2, OUTPUT);
-    pinMode(PIN_S3, OUTPUT);
-    
-    // Initialize Sovereign Protection Paths (Mux Enables)
-    for (int i = 0; i < MUX_COUNT; i++) {
-        pinMode(MUX_ENABLE_PINS[i], OUTPUT);
-        digitalWrite(MUX_ENABLE_PINS[i], HIGH);
-    }
-}
-
-/**
- * @brief Securely configures the routing matrix to read a targeted local sensing path.
- */
-void routeSovereignMatrixPath(int nodeIndex) {
-    if (nodeIndex < 0 || nodeIndex >= NODE_COUNT) return;
-    
-    int activeMux = nodeIndex / MUX_CHANNELS;
-    int activeChannel = nodeIndex % MUX_CHANNELS;
-    
-    for (int i = 0; i < MUX_COUNT; i++) {
-        digitalWrite(MUX_ENABLE_PINS[i], HIGH);
-    }
-    
-    digitalWrite(PIN_S0, (activeChannel & 0x01));
-    digitalWrite(PIN_S1, (activeChannel & 0x02) >> 1);
-    digitalWrite(PIN_S2, (activeChannel & 0x04) >> 2);
-    digitalWrite(PIN_S3, (activeChannel & 0x08) >> 3);
-    
-    digitalWrite(MUX_ENABLE_PINS[activeMux], LOW);
-}
-
-void loop() {
-    Serial.println("--- Beginning Sovereign Resonance Scan ---");
-    
-    for (int node = 0; node < NODE_COUNT; node++) {
-        routeSovereignMatrixPath(node);
-        
-        // --- AD5940 Front-End Interfacing Simulation ---
-        float rawMagnitude = 450.00; 
-        float rawPhaseDeg = -10.00;  
-        
-        float correctedPhaseDeg = rawPhaseDeg + PHASE_CORRECTION_DEGREES;
-        
-        Serial.print("NODE:"); Serial.print(node);
-        Serial.print(",MAG:"); Serial.print(rawMagnitude);
-        Serial.print(",PHASE:"); Serial.println(correctedPhaseDeg);
-        
-        delay(5); 
-    }
-    delay(1000); // Sampling window delay
-}
+// --- Multiplexer Enable Lines (Low Active) ---
+// Note: Pins 10, 11, 12, 13 bypassed to prevent hardware conflicts with the AD5940 SPI Bus
+const int MUX_EN_PINS[MUX_COUNT] = {0, 1, 2, 3, 8, 9, 14, 15};
 ```
-
+"Refactored architecture to Teensy 4.1 and fixed SPI pin mapping"
 ## 💻 Visual Engine & GUI Core (Python / PySide6)
 
 ```python
