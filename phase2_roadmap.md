@@ -90,10 +90,10 @@ To support the software milestones detailed above, the physical scanning substra
 ### 🏗️ Active Physical Configuration
 
 * **Substrate Engine:** Custom double-sided FR4 PCB matrix.
- ⚠️ **Design Decision:** FR4 was chosen specifically to handle structural stress and prevent flexing under the collective spring pressure of the multi-node array. Unstable acrylic/plexiglass alternatives have been discarded.
+* ⚠️ **Design Decision:** FR4 was chosen specifically to handle structural stress and prevent flexing under the collective spring pressure of the multi-node array. Unstable acrylic/plexiglass alternatives have been discarded.
 * **Biological Interconnect:** P50 Pogo-Pin array configured for high-precision anatomical grid tracking.
 * **Grounding Framework (9-Star Topology):** Solid copper ground bus bar integrated onto the chassis backplane. 
-🛡️ **Isolation Schema:** Separates sensitive analog micro-ampere excitation streams from digital logic harmonics and high-frequency multiplexer switching artifacts.
+* 🛡️ **Isolation Schema:** Separates sensitive analog micro-ampere excitation streams from digital logic harmonics and high-frequency multiplexer switching artifacts.
 
 ---
 
