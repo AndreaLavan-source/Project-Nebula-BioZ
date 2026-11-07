@@ -44,6 +44,8 @@ To prove the core architecture operates accurately without signal drifting or sa
 <img width="4045" height="3611" alt="IMG_6935" src="https://github.com/user-attachments/assets/7ed4be3c-8521-4fe1-bac2-1396a617538f" />
 <img width="4173" height="3750" alt="IMG_6933" src="https://github.com/user-attachments/assets/2a0f2803-45e1-4da6-b98b-9063eac149cc" />
 <img width="4030" height="5222" alt="IMG_6939" src="https://github.com/user-attachments/assets/5fcfddea-4e36-4472-a82c-87d571138198" />
+<img width="3379" height="4939" alt="IMG_6943 (1)" src="https://github.com/user-attachments/assets/96789284-677c-412d-8807-8afcdedda400" />
+
 
 
 # 🤝 Seeking Technical Co-Founder / Software Partner
