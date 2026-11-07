@@ -41,32 +41,11 @@ To prove the core architecture operates accurately without signal drifting or sa
 |:---:|:---:|
 | <img src="[Link to your GUI image]" width="100%"> | <img src="[Link to your soldering image]" width="100%"> |
 | *Figure 1: Live Python-based telemetry GUI showing real-time acquisition of magnitude waveforms and phase vectors.* | *Figure 2: Custom low-overhead routing network with heavy-gauge insulation lines to minimize stray parasitic capacitance.* |<img width="3379" height="4939" alt="IMG_6943" src="https://github.com/user-attachments/assets/66860445-e052-41c7-a7c7-a7825f9de480" />
-<table width="100%">
-  <tr>
-    <td width="50%" align="center">
-      <img src="https://github.com" alt="Real-Time Vector Waveforms GUI" width="100%"/>
-      <br>
-      <sub>Figure 1: Live Python-based telemetry GUI showing real-time acquisition of magnitude waveforms and phase vectors.</sub>
-    </td>
-    <td width="50%" align="center">
-      <img src="https://github.com" alt="System Terminal Telemetry Log" width="100%"/>
-      <br>
-      <sub>Figure 2: Vector telemetry validation logs demonstrating steady-state operation without signal drift.</sub>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <img src="https://github.com" alt="Multiplexer Array Routing Topology" width="100%"/>
-      <br>
-      <sub>Figure 3: Custom low-overhead routing network with high-density analog multiplexer arrays.</sub>
-    </td>
-    <td width="50%" align="center">
-      <img src="https://github.com" alt="Point-to-Point Backplane Bussing" width="100%"/>
-      <br>
-      <sub>Figure 4: Clean point-to-point backplane bussing utilizing heavy-gauge insulation lines to minimize parasitic capacitance.</sub>
-    </td>
-  </tr>
-</table>
+<table width="100%"> <tr> <td width="50%" align="center"> P_<img width="3379" height="4939" alt="IMG_6943" src="https://github.com/user-attachments/assets/027e84bb-dd9f-4e61-aec6-fc90eeb3b52d" />
+ <br><sub>Figure 1: Live Python Telemetry GUI</sub> </td> <td width="50%" align="center"> P_<img width="4045" height="3611" alt="IMG_6935" src="https://github.com/user-attachments/assets/e700ff9e-a995-46a3-bc43-3a16f90b690f" />
+ <br><sub>Figure 2: Validation Logs</sub> </td> </tr> <tr> <td width="50%" align="center"> P_<img width="4030" height="5222" alt="IMG_6939" src="https://github.com/user-attachments/assets/851169ce-384a-490f-a1b3-4fbbd21af743" />
+ <br><sub>Figure 3: Multiplexer Routing Matrix</sub> </td> <td width="50%"align="center"> P_<img width="3379" height="4939" alt="IMG_6943 (1)" src="https://github.com/user-attachments/assets/8b24c03d-1e14-433a-bb8e-d0e8d98dc9de" />
+ <br><sub>Figure 4: Clean Backplane Bussing</sub> </td> </tr> </table>
 
 
 
