@@ -84,7 +84,6 @@ To accelerate the delivery of Phase 2 objectives, candidates or software mentors
 # 🗺️ Phase 2: Hardware Co-requisites & Execution Layer
 
 > **Status:** Final Testing Stage 🧪 (Preparing for 92-node grid scaling)
-> *Driven by pure will and open-source grit.*
 
 To support the software milestones detailed above, the physical scanning substrate is transitioning through its final validation phase before we scale to the full 92-node grid architecture.
 
