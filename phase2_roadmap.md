@@ -80,3 +80,41 @@ To accelerate the delivery of Phase 2 objectives, candidates or software mentors
 * **Embedded System Frameworks:** Experience handling direct hardware abstractions, bare-metal timers, and SPI register writing on Cortex-M microcontrollers.
 * **Concurrency in Python:** Proficiency building multi-threaded real-time data visualizers (using `PyQt6`, `Tkinter`, or asynchronous `matplotlib` engines).
 * **Signal Processing (DSP):** Competency developing discrete filtering pipelines to handle complex math operations, ratiometric calibration arrays, and artifact suppression.
+
+# 🗺️ Phase 2: Hardware Co-requisites & Execution Layer
+
+> **Status:** Final Testing Stage 🧪 (Preparing for 92-node grid scaling)
+> *Driven by pure will and open-source grit.*
+
+To support the software milestones detailed above, the physical scanning substrate is transitioning through its final validation phase before we scale to the full 92-node grid architecture.
+
+### 🏗️ Active Physical Configuration
+
+* **Substrate Engine:** Custom double-sided FR4 PCB matrix.
+  * ⚠️ **Design Decision:** FR4 was chosen specifically to handle structural stress and prevent flexing under the collective spring pressure of the multi-node array. Unstable acrylic/plexiglass alternatives have been discarded.
+* **Biological Interconnect:** P50 Pogo-Pin array configured for high-precision anatomical grid tracking.
+* **Grounding Framework (9-Star Topology):** Solid copper ground bus bar integrated onto the chassis backplane. 
+  * 🛡️ **Isolation Schema:** Separates sensitive analog micro-ampere excitation streams from digital logic harmonics and high-frequency multiplexer switching artifacts.
+
+---
+
+### 🔌 Pinout Mapping Registry (Teensy 4.1 Platform)
+
+Software co-developers must map hardware SPI registers and control lines using this verified physical footprint:
+
+| Subsystem | Signal / Line | Physical Pin | Notes / Schema |
+| :--- | :--- | :--- | :--- |
+| **SPI Bus Core** | `CLK` | Pin 13 | Core Clock Line |
+| | `MISO` | Pin 12 | Master In Slave Out |
+| | `MOSI` | Pin 11 | Master Out Slave In |
+| | `CS` | Pin 10 | Chip Select |
+| **AFE Interrupt** | `RDY` | Pin 17 | Data Ready Interrupt Line |
+| **Analog Routing**| `Mux 1-4` | Pins 1, 2, 3, 4 | 4-Line Address Bus |
+| | `AGND` | Silver Bus Matrix | Vertical Matrix (Strict Isolation) |
+
+---
+
+### 📈 Phase 2 Hardware Milestones
+- [ ] Complete final bench testing on the single-cluster substrate.
+- [ ] Validate 9-Star grounding topology under high multiplexer load.
+- [ ] Fabricate and deploy the full 92-node grid scale-up.
