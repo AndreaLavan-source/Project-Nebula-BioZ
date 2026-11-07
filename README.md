@@ -37,31 +37,11 @@ Inherent Liveness Enforcement: By calculating the specific phase-delay (θ) intr
 
 To prove the core architecture operates accurately without signal drifting or saturation, the physical platform was bench-tested and validated:
 
-| Real-Time Vector Acquisition GUI | Clean Point-to-Point Backplane Bussing |
-|:---:|:---:|
-| <img src="[Link to your GUI image]" width="100%"> | <img src="[Link to your soldering image]" width="100%"> |
-| *Figure 1: Live Python-based telemetry GUI showing real-time acquisition of magnitude waveforms and phase vectors.* | *Figure 2: Custom low-overhead routing network with heavy-gauge insulation lines to minimize stray parasitic capacitance.* |<img width="3379" height="4939" alt="IMG_6943" src="https://github.com/user-attachments/assets/66860445-e052-41c7-a7c7-a7825f9de480" />
-<table width="100%"> <tr> <td width="50%" align="center"> P_<img width="4173" height="3750" alt="IMG_6933" src="https://github.com/user-attachments/assets/ecf0047e-be68-46c2-8dc7-0aa80ffc5f77" />
-//github.com/user-attachments/assets/027e84bb-dd9f-4e61-aec6-fc90eeb3b52d" />
- <br><sub>Figure 1: Live Python Telemetry GUI</sub> </td> <td width="50%" align="center"> P<img width="4045" height="3611" alt="IMG_6935" src="https://github.com/user-attachments/assets/45fd66ae-410f-4098-9a18-a344b3da000a" />
-https://github.com/user-attachments/assets/6b6d4f49-b4a9-4db8-9ae1-6b308bacd60e" />
-
-https://github.com/user-attachments/assets/e700ff9e-a995-46a3-bc43-3a16f90b690f" />
- <br><sub>Figure 2: Validation Logs</sub> </td> </tr> <tr> <td width="50%" align="center"> P_<img <img width="4030" height="5222" alt="IMG_6939" src="https://github.com/user-attachments/assets/410822a9-0903-4b80-8e27-c3cbfc88604c" />
-"https://github.com/user-attachments/assets/851169ce-384a-490f-a1b3-4fbbd21af743" />
- <br><sub>Figure 3: Multiplexer Routing Matrix</sub> </td> <td width="50%"align="center"> P_<img width="3379" height="4939" alt="IMG_6943 (1)" src="https://github.com/user-attachments/assets/8b24c03d-1e14-433a-bb8e-d0e8d98dc9de" />
+<table width="100%"> <tr> <td width="50%" align="center"> P<img width="4173" height="3750" alt="IMG_6933" src="https://github.com/user-attachments/assets/6c0f2e00-c2d1-4c82-93a1-2a3a5b50cef6" />
+ <br><sub>Figure 1: Live Python Telemetry GUI</sub> </td> <td width="50%" align="center"> P_<img width="4045" height="3611" alt="IMG_6935" src="https://github.com/user-attachments/assets/422cad6e-1282-4cde-902b-97b4271d9d79" />
+ <br><sub>Figure 2: Validation Logs</sub> </td> </tr> <tr> <td width="50%" align="center"> P_<img width="4030" height="5222" alt="IMG_6939" src="https://github.com/user-attachments/assets/f7c326ac-e74e-472f-aabf-9bd7de068d65" />
+ <br><sub>Figure 3: Multiplexer Routing Matrix</sub> </td> <td width="50%"align="center"> P_<img width="3379" height="4939" alt="IMG_6943" src="https://github.com/user-attachments/assets/ec726712-47e8-4ddc-bb62-edcc9f93edae" />
  <br><sub>Figure 4: Clean Backplane Bussing</sub> </td> </tr> </table>
-
-
-
-### 📸 Empirical Bench Proof & Interface Telemetry
-
-To prove the core architecture operates accurately without signal drifting or saturation, the physical platform was bench-tested and validated:
-
-| Real-Time Vector Acquisition GUI | Clean Point-to-Point Backplane Bussing |
-|:---:|:---:|
-| <img src="[Link to your GUI image]" width="100%"> | <img src="[Link to your soldering image]" width="100%"> |
-| *Figure 1: Live Python-based telemetry GUI showing real-time acquisition of magnitude waveforms and phase vectors.* | *Figure 2: Custom low-overhead routing network with heavy-gauge insulation lines to minimize stray parasitic capacitance.* |
 
 
 # 🤝 Seeking Technical Co-Founder / Software Partner
